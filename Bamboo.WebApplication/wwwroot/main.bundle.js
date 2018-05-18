@@ -130,17 +130,17 @@ var AboutService = (function () {
         this.setting = setting;
     }
     AboutService.prototype.createAbout = function (about) {
-        return this.http.post(this.setting.admin + 'api/about/create', about)
+        return this.http.post('/api/about/create', about)
             .map(function (res) { return res; })
             .catch(function (err) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */].throw(err.json()); });
     };
     AboutService.prototype.getAbouts = function () {
-        return this.http.get(this.setting.admin + 'api/about/abouts')
+        return this.http.get('/api/about/abouts')
             .map(function (res) { return res; })
             .catch(function (err) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */].throw(err.json()); });
     };
     AboutService.prototype.updateAbout = function (about) {
-        return this.http.put(this.setting.admin + 'api/about/update', about)
+        return this.http.put('/api/about/update', about)
             .map(function (res) { return res; })
             .catch(function (err) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */].throw(err.json()); });
     };
