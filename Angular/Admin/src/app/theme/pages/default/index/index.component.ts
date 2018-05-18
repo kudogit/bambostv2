@@ -7,6 +7,7 @@ import { ScriptLoaderService } from '../../../../_services/script-loader.service
     selector: "app-index",
     templateUrl: "./index.component.html",
     encapsulation: ViewEncapsulation.None,
+
 })
 export class IndexComponent implements OnInit, AfterViewInit {
 

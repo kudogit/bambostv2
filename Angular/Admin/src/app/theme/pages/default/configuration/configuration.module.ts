@@ -41,7 +41,7 @@ const routes: Routes = [
         GrowlModule
     ],
     declarations: [
-        ConfigurationComponent,
+        ConfigurationComponent, ConfigurationDisplayComponent
     ],
     providers: [
         HttpClient,

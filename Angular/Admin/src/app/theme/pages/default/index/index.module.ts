@@ -4,9 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './index.component';
 import { LayoutModule } from '../../../layouts/layout.module';
 import { DefaultComponent } from '../default.component';
-import { ConfigurationDisplayComponent } from '../configuration/configuration-display/configuration-display.component';
 import { ConfigurationService } from '../../../../_services/configuration.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ConfigurationComponent } from '../configuration/configuration.component';
 
 const routes: Routes = [
     {
@@ -25,10 +25,9 @@ const routes: Routes = [
         CommonModule, RouterModule.forChild(routes), LayoutModule
     ], exports: [
         RouterModule,
-        HttpClientModule
+        HttpClientModule,
     ], declarations: [
         IndexComponent,
-        ConfigurationDisplayComponent
     ],
     providers: [
         HttpClient,

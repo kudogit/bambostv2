@@ -3,7 +3,7 @@ webpackJsonp(["index.module"],{
 /***/ "../../../../../src/app/theme/pages/default/index/index.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- BEGIN: Subheader -->\r\n<div class=\"m-subheader\" appunwraptag=\"\">\r\n    <div class=\"d-flex align-items-center\">\r\n        <div class=\"mr-auto\">\r\n            <h3 class=\"m-subheader__title\">\r\n                Dashboard\r\n            </h3>\r\n        </div>\r\n        <div>\r\n            <span class=\"m-subheader__daterange\" id=\"m_dashboard_daterangepicker\">\r\n                <span class=\"m-subheader__daterange-label\">\r\n                    <span class=\"m-subheader__daterange-title\"></span>\r\n                    <span class=\"m-subheader__daterange-date m--font-brand\"></span>\r\n                </span>\r\n                <a href=\"#\" class=\"btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill\">\r\n                    <i class=\"la la-angle-down\"></i>\r\n                </a>\r\n            </span>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- END: Subheader -->\r\n<div class=\"m-content\">\r\n    <div class=\"m-portlet\">\r\n        <app-configuration-display></app-configuration-display>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<!-- BEGIN: Subheader -->\r\n<div class=\"m-subheader\" appunwraptag=\"\">\r\n    <div class=\"d-flex align-items-center\">\r\n        <div class=\"mr-auto\">\r\n            <h3 class=\"m-subheader__title\">\r\n                Dashboard\r\n            </h3>\r\n        </div>\r\n        <div>\r\n            <span class=\"m-subheader__daterange\" id=\"m_dashboard_daterangepicker\">\r\n                <span class=\"m-subheader__daterange-label\">\r\n                    <span class=\"m-subheader__daterange-title\"></span>\r\n                    <span class=\"m-subheader__daterange-date m--font-brand\"></span>\r\n                </span>\r\n                <a href=\"#\" class=\"btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill\">\r\n                    <i class=\"la la-angle-down\"></i>\r\n                </a>\r\n            </span>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- END: Subheader -->\r\n<div class=\"m-content\">\r\n    <div class=\"m-portlet\">\r\n        <!-- <app-configuration-display></app-configuration-display> -->\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -61,16 +61,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__index_component__ = __webpack_require__("../../../../../src/app/theme/pages/default/index/index.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__layouts_layout_module__ = __webpack_require__("../../../../../src/app/theme/layouts/layout.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__default_component__ = __webpack_require__("../../../../../src/app/theme/pages/default/default.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__configuration_configuration_display_configuration_display_component__ = __webpack_require__("../../../../../src/app/theme/pages/default/configuration/configuration-display/configuration-display.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_configuration_service__ = __webpack_require__("../../../../../src/app/_services/configuration.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_configuration_service__ = __webpack_require__("../../../../../src/app/_services/configuration.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -100,14 +98,13 @@ var IndexModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"], __WEBPACK_IMPORTED_MODULE_2__angular_router__["RouterModule"].forChild(routes), __WEBPACK_IMPORTED_MODULE_4__layouts_layout_module__["a" /* LayoutModule */]
             ], exports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_router__["RouterModule"],
-                __WEBPACK_IMPORTED_MODULE_8__angular_common_http__["b" /* HttpClientModule */]
+                __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["b" /* HttpClientModule */],
             ], declarations: [
                 __WEBPACK_IMPORTED_MODULE_3__index_component__["a" /* IndexComponent */],
-                __WEBPACK_IMPORTED_MODULE_6__configuration_configuration_display_configuration_display_component__["a" /* ConfigurationDisplayComponent */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_8__angular_common_http__["a" /* HttpClient */],
-                __WEBPACK_IMPORTED_MODULE_7__services_configuration_service__["a" /* ConfigurationService */]
+                __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["a" /* HttpClient */],
+                __WEBPACK_IMPORTED_MODULE_6__services_configuration_service__["a" /* ConfigurationService */]
             ]
         })
     ], IndexModule);

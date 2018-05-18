@@ -53,50 +53,6 @@ var map = {
 		"../../../../../src/app/theme/pages/default/project/project.module.ts",
 		"common",
 		"project.module"
-	],
-	"./pages/self-layout-blank/snippets/pages/errors/errors-error-1/errors-error-1.module": [
-		"../../../../../src/app/theme/pages/self-layout-blank/snippets/pages/errors/errors-error-1/errors-error-1.module.ts",
-		"errors-error-1.module"
-	],
-	"./pages/self-layout-blank/snippets/pages/errors/errors-error-2/errors-error-2.module": [
-		"../../../../../src/app/theme/pages/self-layout-blank/snippets/pages/errors/errors-error-2/errors-error-2.module.ts",
-		"errors-error-2.module"
-	],
-	"./pages/self-layout-blank/snippets/pages/errors/errors-error-3/errors-error-3.module": [
-		"../../../../../src/app/theme/pages/self-layout-blank/snippets/pages/errors/errors-error-3/errors-error-3.module.ts",
-		"errors-error-3.module"
-	],
-	"./pages/self-layout-blank/snippets/pages/errors/errors-error-4/errors-error-4.module": [
-		"../../../../../src/app/theme/pages/self-layout-blank/snippets/pages/errors/errors-error-4/errors-error-4.module.ts",
-		"errors-error-4.module"
-	],
-	"./pages/self-layout-blank/snippets/pages/errors/errors-error-5/errors-error-5.module": [
-		"../../../../../src/app/theme/pages/self-layout-blank/snippets/pages/errors/errors-error-5/errors-error-5.module.ts",
-		"errors-error-5.module"
-	],
-	"./pages/self-layout-blank/snippets/pages/errors/errors-error-6/errors-error-6.module": [
-		"../../../../../src/app/theme/pages/self-layout-blank/snippets/pages/errors/errors-error-6/errors-error-6.module.ts",
-		"errors-error-6.module"
-	],
-	"./pages/self-layout-blank/snippets/pages/user/user-login-1/user-login-1.module": [
-		"../../../../../src/app/theme/pages/self-layout-blank/snippets/pages/user/user-login-1/user-login-1.module.ts",
-		"user-login-1.module"
-	],
-	"./pages/self-layout-blank/snippets/pages/user/user-login-2/user-login-2.module": [
-		"../../../../../src/app/theme/pages/self-layout-blank/snippets/pages/user/user-login-2/user-login-2.module.ts",
-		"user-login-2.module"
-	],
-	"./pages/self-layout-blank/snippets/pages/user/user-login-3/user-login-3.module": [
-		"../../../../../src/app/theme/pages/self-layout-blank/snippets/pages/user/user-login-3/user-login-3.module.ts",
-		"user-login-3.module"
-	],
-	"./pages/self-layout-blank/snippets/pages/user/user-login-4/user-login-4.module": [
-		"../../../../../src/app/theme/pages/self-layout-blank/snippets/pages/user/user-login-4/user-login-4.module.ts",
-		"user-login-4.module"
-	],
-	"./pages/self-layout-blank/snippets/pages/user/user-login-5/user-login-5.module": [
-		"../../../../../src/app/theme/pages/self-layout-blank/snippets/pages/user/user-login-5/user-login-5.module.ts",
-		"user-login-5.module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -1427,7 +1383,7 @@ var AuthComponent = (function () {
     AuthComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: '.m-grid.m-grid--hor.m-grid--root.m-page',
-            template: __webpack_require__("../../../../../src/app/auth/templates/login-1.component.html"),
+            template: __webpack_require__("../../../../../src/app/auth/templates/login.component.html"),
             encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"],
@@ -1577,7 +1533,7 @@ var LogoutComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/auth/templates/login-1.component.html":
+/***/ "../../../../../src/app/auth/templates/login.component.html":
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--signin\" id=\"m_login\">\r\n\t<div class=\"m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside\">\r\n\t\t<div class=\"m-stack m-stack--hor m-stack--desktop\">\r\n\t\t\t<div class=\"m-stack__item m-stack__item--fluid\">\r\n\t\t\t\t<div class=\"m-login__wrapper\">\r\n\t\t\t\t\t<div class=\"m-login__logo\">\r\n\t\t\t\t\t\t<a href=\"#\">\r\n\t\t\t\t\t\t\t<img src=\"./assets/app/media/img//logos/logo-2.png\">\r\n\t\t\t\t\t\t</a>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"m-login__signin\">\r\n\t\t\t\t\t\t<!-- <div class=\"m-login__head\">\r\n\t\t\t\t\t\t\t<h3 class=\"m-login__title\">\r\n\t\t\t\t\t\t\t\tSign In To Admin\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t\t<div class=\"m--margin-top-40 m-alert m-alert--outline m-alert--outline-2x alert alert-success fade show\" role=\"alert\">\r\n\t\t\t\t\t\t\t\tUse username\r\n\t\t\t\t\t\t\t\t<span style=\"font-weight: 500;\">\r\n\t\t\t\t\t\t\t\t\tdemo@demo.com\r\n\t\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\tand password\r\n\t\t\t\t\t\t\t\t<span style=\"font-weight: 500;\">\r\n\t\t\t\t\t\t\t\t\tdemo\r\n\t\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t\t\tto continue or singup.\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div> -->\r\n\t\t\t\t\t\t<form (ngSubmit)=\"f.form.valid && signin()\" #f=\"ngForm\" class=\"m-login__form m-form\" action=\"\">\r\n\t\t\t\t\t\t\t<ng-template #alertSignin></ng-template>\r\n\t\t\t\t\t\t\t<div class=\"form-group m-form__group\">\r\n\t\t\t\t\t\t\t\t<input class=\"form-control m-input\" type=\"text\" placeholder=\"Email\" name=\"email\" [(ngModel)]=\"model.email\" #email=\"ngModel\" autocomplete=\"off\">\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"form-group m-form__group\">\r\n\t\t\t\t\t\t\t\t<input class=\"form-control m-input m-login__form-input--last\" type=\"password\" placeholder=\"Password\" name=\"password\" [(ngModel)]=\"model.password\" #password=\"ngModel\">\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"row m-login__form-sub\">\r\n\t\t\t\t\t\t\t\t<div class=\"col m--align-left\">\r\n\t\t\t\t\t\t\t\t\t<label class=\"m-checkbox m-checkbox--focus\">\r\n\t\t\t\t\t\t\t\t\t\t<input type=\"checkbox\" name=\"remember\" [(ngModel)]=\"model.remember\" #remember=\"ngModel\">\r\n\t\t\t\t\t\t\t\t\t\tRemember me\r\n\t\t\t\t\t\t\t\t\t\t<span></span>\r\n\t\t\t\t\t\t\t\t\t</label>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<div class=\"col m--align-right\">\r\n\t\t\t\t\t\t\t\t\t<a href=\"javascript:;\" id=\"m_login_forget_password\" class=\"m-link\">\r\n\t\t\t\t\t\t\t\t\t\tForget Password ?\r\n\t\t\t\t\t\t\t\t\t</a>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"m-login__form-action\">\r\n\t\t\t\t\t\t\t\t<button [disabled]=\"loading\" [ngClass]=\"{'m-loader m-loader--right m-loader--light': loading}\" id=\"m_login_signin_submit\" class=\"btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air\">\r\n\t\t\t\t\t\t\t\t\tSign In\r\n\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</form>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"m-login__signup\">\r\n\t\t\t\t\t\t<div class=\"m-login__head\">\r\n\t\t\t\t\t\t\t<h3 class=\"m-login__title\">\r\n\t\t\t\t\t\t\t\tSign Up\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t\t<div class=\"m-login__desc\">\r\n\t\t\t\t\t\t\t\tEnter your details to create your account:\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<form (ngSubmit)=\"f.form.valid && signup()\" #f=\"ngForm\" class=\"m-login__form m-form\" action=\"\">\r\n\t\t\t\t\t\t\t<ng-template #alertSignup></ng-template>\r\n\t\t\t\t\t\t\t<div class=\"form-group m-form__group\">\r\n\t\t\t\t\t\t\t\t<input class=\"form-control m-input\" type=\"text\" placeholder=\"Fullname\" name=\"fullname\" [(ngModel)]=\"model.fullname\" #fullname=\"ngModel\">\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"form-group m-form__group\">\r\n\t\t\t\t\t\t\t\t<input class=\"form-control m-input\" type=\"text\" placeholder=\"Email\" name=\"email\" [(ngModel)]=\"model.email\" #email=\"ngModel\" autocomplete=\"off\">\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"form-group m-form__group\">\r\n\t\t\t\t\t\t\t\t<input class=\"form-control m-input\" type=\"password\" placeholder=\"Password\" name=\"password\" [(ngModel)]=\"model.password\" #password=\"ngModel\">\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"form-group m-form__group\">\r\n\t\t\t\t\t\t\t\t<input class=\"form-control m-input m-login__form-input--last\" type=\"password\" placeholder=\"Confirm Password\" name=\"rpassword\" [(ngModel)]=\"model.rpassword\" #rpassword=\"ngModel\">\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"row form-group m-form__group m-login__form-sub\">\r\n\t\t\t\t\t\t\t\t<div class=\"col m--align-left\">\r\n\t\t\t\t\t\t\t\t\t<label class=\"m-checkbox m-checkbox--focus\">\r\n\t\t\t\t\t\t\t\t\t\t<input type=\"checkbox\" name=\"agree\" [(ngModel)]=\"model.agree\" #agree=\"ngModel\">\r\n\t\t\t\t\t\t\t\t\t\tI Agree the\r\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"m-link m-link--focus\">\r\n\t\t\t\t\t\t\t\t\t\t\tterms and conditions\r\n\t\t\t\t\t\t\t\t\t\t</a>\r\n\t\t\t\t\t\t\t\t\t\t.\r\n\t\t\t\t\t\t\t\t\t\t<span></span>\r\n\t\t\t\t\t\t\t\t\t</label>\r\n\t\t\t\t\t\t\t\t\t<span class=\"m-form__help\"></span>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"m-login__form-action\">\r\n\t\t\t\t\t\t\t\t<button [disabled]=\"loading\" [ngClass]=\"{'m-loader m-loader--right m-loader--light': loading}\" id=\"m_login_signup_submit\" class=\"btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air\">\r\n\t\t\t\t\t\t\t\t\tSign Up\r\n\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t<button [disabled]=\"loading\"  id=\"m_login_signup_cancel\" class=\"btn btn-outline-focus  m-btn m-btn--pill m-btn--custom\">\r\n\t\t\t\t\t\t\t\t\tCancel\r\n\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</form>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"m-login__forget-password\">\r\n\t\t\t\t\t\t<div class=\"m-login__head\">\r\n\t\t\t\t\t\t\t<h3 class=\"m-login__title\">\r\n\t\t\t\t\t\t\t\tForgotten Password ?\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t\t<div class=\"m-login__desc\">\r\n\t\t\t\t\t\t\t\tEnter your email to reset your password:\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<form (ngSubmit)=\"f.form.valid && forgotPass()\" #f=\"ngForm\" class=\"m-login__form m-form\" action=\"\">\r\n\t\t\t\t\t\t\t<ng-template #alertForgotPass></ng-template>\r\n\t\t\t\t\t\t\t<div class=\"form-group m-form__group\">\r\n\t\t\t\t\t\t\t\t<input class=\"form-control m-input\" type=\"text\" placeholder=\"Email\" name=\"email\" [(ngModel)]=\"model.email\" #email=\"ngModel\" id=\"m_email\" autocomplete=\"off\">\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"m-login__form-action\">\r\n\t\t\t\t\t\t\t\t<button [disabled]=\"loading\" [ngClass]=\"{'m-loader m-loader--right m-loader--light': loading}\" id=\"m_login_forget_password_submit\" class=\"btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air\">\r\n\t\t\t\t\t\t\t\t\tRequest\r\n\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t\t<button [disabled]=\"loading\"  id=\"m_login_forget_password_cancel\" class=\"btn btn-outline-focus m-btn m-btn--pill m-btn--custom\">\r\n\t\t\t\t\t\t\t\t\tCancel\r\n\t\t\t\t\t\t\t\t</button>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</form>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"m-stack__item m-stack__item--center\">\r\n\t\t\t\t<div class=\"m-login__account\">\r\n\t\t\t\t\t<span class=\"m-login__account-msg\">\r\n\t\t\t\t\t\tDon't have an account yet ?\r\n\t\t\t\t\t</span>\r\n\t\t\t\t\t&nbsp;&nbsp;\r\n\t\t\t\t\t<a href=\"javascript:;\" id=\"m_login_signup\" class=\"m-link m-link--focus m-login__account-link\">\r\n\t\t\t\t\t\tSign Up\r\n\t\t\t\t\t</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1\tm-login__content\" style=\"background-image: url(./assets/app/media/img//bg/bg-4.jpg)\">\r\n\t\t<div class=\"m-grid__item m-grid__item--middle\">\r\n\t\t\t<h3 class=\"m-login__welcome\">\r\n\t\t\t\tJoin Our Community\r\n\t\t\t</h3>\r\n\t\t\t<p class=\"m-login__msg\">\r\n\t\t\t\tLorem ipsum dolor sit amet, coectetuer adipiscing\r\n\t\t\t\t<br>\r\n\t\t\t\telit sed diam nonummy et nibh euismod\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n"
@@ -1783,14 +1739,12 @@ var HeaderNavComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__directives_href_prevent_default_directive__ = __webpack_require__("../../../../../src/app/_directives/href-prevent-default.directive.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__directives_unwrap_tag_directive__ = __webpack_require__("../../../../../src/app/_directives/unwrap-tag.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_aside_left_minimize_default_enabled_aside_left_minimize_default_enabled_component__ = __webpack_require__("../../../../../src/app/theme/pages/aside-left-minimize-default-enabled/aside-left-minimize-default-enabled.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -1810,7 +1764,6 @@ var LayoutModule = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_1__layout_layout_component__["a" /* LayoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_aside_left_minimize_default_enabled_aside_left_minimize_default_enabled_component__["a" /* AsideLeftMinimizeDefaultEnabledComponent */],
                 __WEBPACK_IMPORTED_MODULE_2__header_nav_header_nav_component__["a" /* HeaderNavComponent */],
                 __WEBPACK_IMPORTED_MODULE_3__pages_default_default_component__["a" /* DefaultComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__aside_nav_aside_nav_component__["a" /* AsideNavComponent */],
@@ -1822,7 +1775,6 @@ var LayoutModule = (function () {
             ],
             exports: [
                 __WEBPACK_IMPORTED_MODULE_1__layout_layout_component__["a" /* LayoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_aside_left_minimize_default_enabled_aside_left_minimize_default_enabled_component__["a" /* AsideLeftMinimizeDefaultEnabledComponent */],
                 __WEBPACK_IMPORTED_MODULE_2__header_nav_header_nav_component__["a" /* HeaderNavComponent */],
                 __WEBPACK_IMPORTED_MODULE_3__pages_default_default_component__["a" /* DefaultComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__aside_nav_aside_nav_component__["a" /* AsideNavComponent */],
@@ -2016,49 +1968,6 @@ var TooltipsComponent = (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/theme/pages/aside-left-minimize-default-enabled/aside-left-minimize-default-enabled.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<app-aside-nav></app-aside-nav>\r\n<div class=\"m-grid__item m-grid__item--fluid m-wrapper\">\r\n\t<router-outlet></router-outlet>\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/theme/pages/aside-left-minimize-default-enabled/aside-left-minimize-default-enabled.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AsideLeftMinimizeDefaultEnabledComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var AsideLeftMinimizeDefaultEnabledComponent = (function () {
-    function AsideLeftMinimizeDefaultEnabledComponent() {
-    }
-    AsideLeftMinimizeDefaultEnabledComponent.prototype.ngOnInit = function () {
-    };
-    AsideLeftMinimizeDefaultEnabledComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: ".m-grid__item.m-grid__item--fluid.m-grid.m-grid--ver-desktop.m-grid--desktop.m-body",
-            template: __webpack_require__("../../../../../src/app/theme/pages/aside-left-minimize-default-enabled/aside-left-minimize-default-enabled.component.html"),
-            encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None,
-        }),
-        __metadata("design:paramtypes", [])
-    ], AsideLeftMinimizeDefaultEnabledComponent);
-    return AsideLeftMinimizeDefaultEnabledComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "../../../../../src/app/theme/pages/default/default.component.html":
 /***/ (function(module, exports) {
 
@@ -2173,50 +2082,6 @@ var routes = [
                 "pathMatch": "full"
             }
         ]
-    },
-    {
-        "path": "snippets\/pages\/user\/login-1",
-        "loadChildren": ".\/pages\/self-layout-blank\/snippets\/pages\/user\/user-login-1\/user-login-1.module#UserLogin1Module"
-    },
-    {
-        "path": "snippets\/pages\/user\/login-2",
-        "loadChildren": ".\/pages\/self-layout-blank\/snippets\/pages\/user\/user-login-2\/user-login-2.module#UserLogin2Module"
-    },
-    {
-        "path": "snippets\/pages\/user\/login-3",
-        "loadChildren": ".\/pages\/self-layout-blank\/snippets\/pages\/user\/user-login-3\/user-login-3.module#UserLogin3Module"
-    },
-    {
-        "path": "snippets\/pages\/user\/login-4",
-        "loadChildren": ".\/pages\/self-layout-blank\/snippets\/pages\/user\/user-login-4\/user-login-4.module#UserLogin4Module"
-    },
-    {
-        "path": "snippets\/pages\/user\/login-5",
-        "loadChildren": ".\/pages\/self-layout-blank\/snippets\/pages\/user\/user-login-5\/user-login-5.module#UserLogin5Module"
-    },
-    {
-        "path": "snippets\/pages\/errors\/error-1",
-        "loadChildren": ".\/pages\/self-layout-blank\/snippets\/pages\/errors\/errors-error-1\/errors-error-1.module#ErrorsError1Module"
-    },
-    {
-        "path": "snippets\/pages\/errors\/error-2",
-        "loadChildren": ".\/pages\/self-layout-blank\/snippets\/pages\/errors\/errors-error-2\/errors-error-2.module#ErrorsError2Module"
-    },
-    {
-        "path": "snippets\/pages\/errors\/error-3",
-        "loadChildren": ".\/pages\/self-layout-blank\/snippets\/pages\/errors\/errors-error-3\/errors-error-3.module#ErrorsError3Module"
-    },
-    {
-        "path": "snippets\/pages\/errors\/error-4",
-        "loadChildren": ".\/pages\/self-layout-blank\/snippets\/pages\/errors\/errors-error-4\/errors-error-4.module#ErrorsError4Module"
-    },
-    {
-        "path": "snippets\/pages\/errors\/error-5",
-        "loadChildren": ".\/pages\/self-layout-blank\/snippets\/pages\/errors\/errors-error-5\/errors-error-5.module#ErrorsError5Module"
-    },
-    {
-        "path": "snippets\/pages\/errors\/error-6",
-        "loadChildren": ".\/pages\/self-layout-blank\/snippets\/pages\/errors\/errors-error-6\/errors-error-6.module#ErrorsError6Module"
     },
     {
         "path": "**",
