@@ -11,9 +11,10 @@ using System;
 namespace Bamboo.Data.EF.Migrations
 {
     [DbContext(typeof(DbContext))]
-    partial class DbContextModelSnapshot : ModelSnapshot
+    [Migration("20180518162719_create-about-test-window-azure")]
+    partial class createabouttestwindowazure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
