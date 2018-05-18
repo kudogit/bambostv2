@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using Bamboo.Core;
 using Bamboo.Core.Validators;
@@ -83,16 +85,24 @@ namespace Bamboo.WebApplication
 
             app.UseCors(DefaultCorsPolicyName);
 
+
             app.UseAuthentication();
 
             app.UseSignalRService();
 
-            app.UseDefaultFiles();
-
-            app.UseStaticFiles();
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+            }).UseDefaultFiles(new DefaultFilesOptions { DefaultFileNames = new List<string> { "index.html" } })
+             .UseStaticFiles();
 
             app.UseMvc();
-            
+
         }
     }
 }
