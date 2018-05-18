@@ -102,8 +102,8 @@
               </td>
               <td class="m-datatable__cell">
                 <span style="width: 132px;">
-                  <button class="btn-primary" (click)="createProjectCategery()">Save</button>
-                  <button class="btn-warning" (click)="isAddNewProjectCategory = false; projectCategoryModel.name = ''">Cancel</button>
+                  <button class="btn btn-primary" (click)="createProjectCategery()">Save</button>
+                  <button class="btn btn-warning" (click)="isAddNewProjectCategory = false; projectCategoryModel.name = ''">Cancel</button>
                 </span>
               </td>
             </tr>
@@ -124,10 +124,10 @@
               </td>
               <td class="m-datatable__cell">
                 <span style="width: 132px;">
-                  <button *ngIf="!item.isEdit" class="btn-warning" (click)="deleteProjectCategory(item.id)">Delete</button>
-                  <button *ngIf="!item.isEdit" (click)="item.isEdit = true" class="btn-primary">Edit</button>
-                  <button *ngIf="item.isEdit" class="btn-primary" (click)="editProjectCategory(item)">Save</button>
-                  <button *ngIf="item.isEdit" class="btn-warning" (click)="item.isEdit = false">Cancel</button>
+                  <button *ngIf="!item.isEdit" class="btn btn-warning" (click)="deleteProjectCategory(item.id)">Delete</button>
+                  <button *ngIf="!item.isEdit" (click)="item.isEdit = true" class="btn btn-primary">Edit</button>
+                  <button *ngIf="item.isEdit" class="btn btn-primary" (click)="editProjectCategory(item)">Save</button>
+                  <button *ngIf="item.isEdit" class="btn btn-warning" (click)="item.isEdit = false">Cancel</button>
                 </span>
               </td>
             </tr>

@@ -6,12 +6,14 @@ import { ProjectComponent } from './project.component';
 import { DefaultComponent } from '../default.component';
 import { LayoutModule } from '../../../layouts/layout.module';
 import { ProjectCreateComponent } from './project-create/project-create.component';
-import { FileUploadModule, DropdownModule, EditorModule } from 'primeng/primeng';
+import { FileUploadModule, DropdownModule, EditorModule, ConfirmationService } from 'primeng/primeng';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { GrowlModule } from 'primeng/primeng';
 import { ConfirmDialogModule } from 'primeng/primeng';
 import { DataTableModule } from 'primeng/primeng';
 import { ProjectEditComponent } from './project-edit/project-edit.component';
+import { ProjectService } from '../../../../_services/project.service';
+import { MessageService } from 'primeng/components/common/messageservice';
 const routes: Routes = [
     {
         path: "",
@@ -21,8 +23,8 @@ const routes: Routes = [
                 path: "",
                 component: ProjectComponent,
                 children: [
-                    { path: 'add', component:  ProjectCreateComponent },
-                    { path: 'list', component: ProjectListComponent },
+                    { path: 'tao-moi', component: ProjectCreateComponent },
+                    { path: 'danh-sach', component: ProjectListComponent },
                 ]
             }
         ]
@@ -45,6 +47,9 @@ const routes: Routes = [
     ],
     declarations: [
         ProjectComponent, ProjectListComponent, ProjectCreateComponent , ProjectEditComponent
+    ],
+    providers:[
+        ProjectService , MessageService , ConfirmationService
     ]
 })
 

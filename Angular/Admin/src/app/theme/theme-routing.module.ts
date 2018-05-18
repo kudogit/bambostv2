@@ -15,7 +15,7 @@ const routes: Routes = [
                 "loadChildren": ".\/pages\/default\/index\/index.module#IndexModule"
             },
             {
-                "path": "product",
+                "path": "san-pham",
                 "loadChildren": ".\/pages\/default\/product\/product.module#ProductModule"
             },
             {
@@ -43,7 +43,7 @@ const routes: Routes = [
                 "loadChildren": ".\/pages\/default\/configuration\/configuration.module#ConfigurationModule"
             },
             {
-                "path": "project/:id",
+                "path": "du-an",
                 "loadChildren": ".\/pages\/default\/project\/project.module#ProjectModule"
             },
             {
