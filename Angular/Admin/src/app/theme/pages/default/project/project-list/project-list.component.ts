@@ -11,7 +11,7 @@ import { ConfirmationService } from 'primeng/primeng';
         './project-list.css'
     ]
 })
-export class ProjectListComponent implements OnInit, AfterViewInit{
+export class ProjectListComponent implements OnInit, AfterViewInit {
     public msgs: Message[];
     public projectCategoryModel: CreateProjectCategory = {
         name: ''
@@ -40,13 +40,12 @@ export class ProjectListComponent implements OnInit, AfterViewInit{
 
     public isEditProject: boolean = false;
 
-    constructor(public projectService: ProjectService , 
-                private _script: ScriptLoaderService,
-                private messageService: MessageService,
-                private confirmationService: ConfirmationService)
-                { 
+    constructor(public projectService: ProjectService,
+        private _script: ScriptLoaderService,
+        private messageService: MessageService,
+        private confirmationService: ConfirmationService) {
 
-                }
+    }
 
     ngAfterViewInit() {
         this._script.loadScripts('app-project-list',
@@ -67,7 +66,7 @@ export class ProjectListComponent implements OnInit, AfterViewInit{
     createProjectCategery() {
         this.projectService.createProjectCategory(this.projectCategoryModel).subscribe(data => {
             if (data != undefined) {
-                this.messageService.add({severity:'success', summary:'Thêm Mới Dự Án Thành Công', detail:'Thành Công'});
+                this.messageService.add({ severity: 'success', summary: 'Thêm Mới Dự Án Thành Công', detail: 'Thành Công' });
                 this.projectCategories.push({
                     id: data,
                     name: this.projectCategoryModel.name,
@@ -76,9 +75,9 @@ export class ProjectListComponent implements OnInit, AfterViewInit{
                 this.projectCategoryModel.name = '';
             }
         },
-        err=>{
-            this.messageService.add({severity:'error', summary:'Thêm Mới Dự Án Thất Bại', detail:'Thất Bại'});
-        })
+            err => {
+                this.messageService.add({ severity: 'error', summary: 'Thêm Mới Dự Án Thất Bại', detail: 'Thất Bại' });
+            })
     }
 
     getProjectCategories() {
@@ -96,10 +95,10 @@ export class ProjectListComponent implements OnInit, AfterViewInit{
             message: 'Bạn có muốn xóa thông tin này ?',
             accept: () => {
                 this.projectService.deleteProjectCategory(id).subscribe(data => {
-                    this.messageService.add({severity:'success', summary:'Xóa Dự Án Thành Công', detail:'Thành Công'});
+                    this.messageService.add({ severity: 'success', summary: 'Xóa Dự Án Thành Công', detail: 'Thành Công' });
                     this.getProjectCategories();
-                },err=>{
-                    this.messageService.add({severity:'error', summary:'Xóa Dự Án Thất Bại', detail:'Thất Bại'});
+                }, err => {
+                    this.messageService.add({ severity: 'error', summary: 'Xóa Dự Án Thất Bại', detail: 'Thất Bại' });
                 })
             }
         });
@@ -107,12 +106,12 @@ export class ProjectListComponent implements OnInit, AfterViewInit{
 
     editProjectCategory(item) {
         this.projectService.editProjectCategory(item).subscribe(data => {
-            this.messageService.add({severity:'success', summary:'Chỉnh Sửa Án Thành Công', detail:'Thành Công'});
+            this.messageService.add({ severity: 'success', summary: 'Chỉnh Sửa Án Thành Công', detail: 'Thành Công' });
             this.getProjectCategories();
         },
-        err=>{
-            this.messageService.add({severity:'error', summary:'Chỉnh Sửa Án Thất Bại', detail:'Thất Bại'});
-        })
+            err => {
+                this.messageService.add({ severity: 'error', summary: 'Chỉnh Sửa Án Thất Bại', detail: 'Thất Bại' });
+            })
     }
 
     getProjects() {
@@ -128,9 +127,9 @@ export class ProjectListComponent implements OnInit, AfterViewInit{
             accept: () => {
                 this.projectService.deleteProject(id).subscribe(data => {
                     this.getProjects();
-                    this.messageService.add({severity:'success', summary:'Xóa Dự Án Thành Công', detail:'Thành Công'});
-                },err=>{
-                    this.messageService.add({severity:'error', summary:'Xóa Án Thất Bại', detail:'Thất Bại'});
+                    this.messageService.add({ severity: 'success', summary: 'Xóa Dự Án Thành Công', detail: 'Thành Công' });
+                }, err => {
+                    this.messageService.add({ severity: 'error', summary: 'Xóa Án Thất Bại', detail: 'Thất Bại' });
                 });
             }
         });

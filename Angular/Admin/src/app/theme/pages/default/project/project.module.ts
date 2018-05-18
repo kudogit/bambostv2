@@ -46,10 +46,10 @@ const routes: Routes = [
         EditorModule
     ],
     declarations: [
-        ProjectComponent, ProjectListComponent, ProjectCreateComponent , ProjectEditComponent
+        ProjectComponent, ProjectListComponent, ProjectCreateComponent, ProjectEditComponent
     ],
-    providers:[
-        ProjectService , MessageService , ConfirmationService
+    providers: [
+        ProjectService, MessageService, ConfirmationService
     ]
 })
 

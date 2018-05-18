@@ -22,7 +22,7 @@ const routes: Routes = [
                 component: ConfigurationComponent,
                 children: [
                     { path: 'add', component: ConfigurationDisplayComponent },
-                   
+
                 ]
             }
         ]

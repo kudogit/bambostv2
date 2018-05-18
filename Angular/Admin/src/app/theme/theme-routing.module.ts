@@ -15,18 +15,6 @@ const routes: Routes = [
                 "loadChildren": ".\/pages\/default\/index\/index.module#IndexModule"
             },
             {
-                "path": "san-pham",
-                "loadChildren": ".\/pages\/default\/product\/product.module#ProductModule"
-            },
-            {
-                "path": "header\/actions",
-                "loadChildren": ".\/pages\/default\/header\/header-actions\/header-actions.module#HeaderActionsModule"
-            },
-            {
-                "path": "header\/profile",
-                "loadChildren": ".\/pages\/default\/header\/header-profile\/header-profile.module#HeaderProfileModule"
-            },
-            {
                 "path": "404",
                 "loadChildren": ".\/pages\/default\/not-found\/not-found.module#NotFoundModule"
             },
@@ -39,7 +27,7 @@ const routes: Routes = [
                 "loadChildren": ".\/pages\/default\/about\/about-create\/about-create.module#AboutCreateModule"
             },
             {
-                "path": "configuration",
+                "path": "cau-hinh",
                 "loadChildren": ".\/pages\/default\/configuration\/configuration.module#ConfigurationModule"
             },
             {

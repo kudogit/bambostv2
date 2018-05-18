@@ -37,8 +37,8 @@ export class ProjectEditComponent implements OnInit {
         });
     }
 
-    public resetForm(){
-        
+    public resetForm() {
+
     }
 
     save() {

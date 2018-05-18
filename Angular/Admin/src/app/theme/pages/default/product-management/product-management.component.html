@@ -69,61 +69,61 @@
         <table class="m-datatable__table">
           <thead class="m-datatable__head">
             <tr class="m-datatable__row">
-              <th class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check">
-                <span style="width: 50px;">
+              <th class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check" style="width: 5%;">
+                <span>
                   <label class="m-checkbox m-checkbox--single m-checkbox--all m-checkbox--solid m-checkbox--brand">
                     <input type="checkbox">
                     <span></span>
                   </label>
                 </span>
               </th>
-              <th class="m-datatable__cell m-datatable__cell--sort">
-                <span style="width: 132px;">Name</span>
+              <th class="m-datatable__cell m-datatable__cell--sort" style="width: 70%;">
+                <span>Name</span>
               </th>
-              <th class="m-datatable__cell m-datatable__cell--sort">
-                <span style="width: 132px;">Actions</span>
+              <th class="m-datatable__cell m-datatable__cell--sort" style="width: 25%;">
+                <span>Actions</span>
               </th>
             </tr>
           </thead>
           <tbody class="m-datatable__body">
             <tr class="m-datatable__row" *ngIf="isAddNewProjectCategory">
-              <td class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check">
-                <span style="width: 50px;">
+              <td class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check" style="width: 5%;">
+                <span>
                   <label class="m-checkbox m-checkbox--single m-checkbox--solid m-checkbox--brand">
                     <input type="checkbox">
                     <span></span>
                   </label>
                 </span>
               </td>
-              <td class="m-datatable__cell">
-                <span style="width: 132px;">
+              <td class="m-datatable__cell" style="width: 70%;">
+                <span>
                   <input class="form-control m-input m-input--solid" type="text" placeholder="Tên loại dự án" [(ngModel)]="projectCategoryModel.name">
                 </span>
               </td>
-              <td class="m-datatable__cell">
-                <span style="width: 132px;">
+              <td class="m-datatable__cell" style="width: 25%;">
+                <span>
                   <button class="btn btn-primary" (click)="createProjectCategery()">Save</button>
                   <button class="btn btn-warning" (click)="isAddNewProjectCategory = false; projectCategoryModel.name = ''">Cancel</button>
                 </span>
               </td>
             </tr>
             <tr class="m-datatable__row" *ngFor="let item of projectCategories | filter:filter">
-              <td class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check">
-                <span style="width: 50px;">
+              <td class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check" style="width: 5%;">
+                <span>
                   <label class="m-checkbox m-checkbox--single m-checkbox--solid m-checkbox--brand">
                     <input type="checkbox" value="item.id">
                     <span></span>
                   </label>
                 </span>
               </td>
-              <td class="m-datatable__cell">
-                <span *ngIf="!item.isEdit" style="width: 132px;">{{item.name}}</span>
-                <span *ngIf="item.isEdit" style="width: 132px;">
+              <td class="m-datatable__cell" style="width: 70%;">
+                <span *ngIf="!item.isEdit">{{item.name}}</span>
+                <span *ngIf="item.isEdit">
                   <input class="form-control m-input m-input--solid" type="text" [(ngModel)]="item.name">
                 </span>
               </td>
-              <td class="m-datatable__cell">
-                <span style="width: 132px;">
+              <td class="m-datatable__cell" style="width: 25%;">
+                <span>
                   <button *ngIf="!item.isEdit" class="btn btn-warning" (click)="deleteProjectCategory(item.id)">Delete</button>
                   <button *ngIf="!item.isEdit" (click)="item.isEdit = true" class="btn btn-primary">Edit</button>
                   <button *ngIf="item.isEdit" class="btn btn-primary" (click)="editProjectCategory(item)">Save</button>
