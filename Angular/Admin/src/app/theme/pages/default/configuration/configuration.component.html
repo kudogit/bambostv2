@@ -1,0 +1,25 @@
+<p-growl [(value)]="msgs"></p-growl>
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                Giới thiệu chung
+            </h3>
+        </div>
+    </div>
+</div>
+<!-- END: Subheader -->
+<div class="m-content">
+    <div class="m-portlet">
+        <div class="col-md-12">
+            <div class="wrap_box_content">
+                <p-editor [(ngModel)]="generalInfoModel.value" [style]="{'height':'320px'}">
+                </p-editor>
+            </div>
+        </div>
+        <div class="col-md-12 text-right" style="margin:10px 0px;">
+            <button style="margin-bottom: 20px;" class="btn btn-primary" (click)="save()">Save</button>
+        </div>
+    </div>
+</div>

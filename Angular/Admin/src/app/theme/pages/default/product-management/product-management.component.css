@@ -1,0 +1,6 @@
+.m-datatable.m-datatable--default > .m-datatable__table{
+    min-height: auto;
+}
+.modal-dialog{
+    max-width: 50%;
+}

@@ -1,0 +1,274 @@
+<!-- BEGIN: Left Aside -->
+<button class="m-aside-left-close  m-aside-left-close--skin-dark" id="m_aside_left_close_btn" appunwraptag="">
+	<i class="la la-close"></i>
+</button>
+<div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-dark">
+	<!-- BEGIN: Aside Menu -->
+	<div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark" data-menu-vertical="true"
+	 data-menu-scrollable="false" data-menu-dropdown-timeout="500">
+		<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">
+			<li class="m-menu__item  " routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+				<a routerLink="/index" class="m-menu__link">
+					<i class="m-menu__link-icon flaticon-line-graph"></i>
+					<span class="m-menu__link-title">
+						<span class="m-menu__link-wrap">
+							<span class="m-menu__link-text">
+								Dashboard
+							</span>
+						</span>
+					</span>
+				</a>
+			</li>
+			<!-- Actions Main -->
+			<li class="m-menu__section">
+				<h4 class="m-menu__section-text">
+					Actions
+				</h4>
+				<i class="m-menu__section-icon flaticon-more-v3"></i>
+			</li>
+			<li class="m-menu__item  m-menu__item--submenu" routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+			 aria-haspopup="true" data-menu-submenu-toggle="hover">
+				<a href="#" class="m-menu__link m-menu__toggle">
+					<i class="m-menu__link-icon flaticon-list"></i>
+					<span class="m-menu__link-text">
+						Cấu hình
+					</span>
+					<i class="m-menu__ver-arrow la la-angle-right"></i>
+				</a>
+				<div class="m-menu__submenu">
+					<span class="m-menu__arrow"></span>
+					<ul class="m-menu__subnav">
+						<li class="m-menu__item  m-menu__item--parent" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
+						 aria-haspopup="true">
+							<span class="m-menu__link">
+								<span class="m-menu__link-text">
+									Đơn Hàng
+								</span>
+							</span>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/configuration" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Cấu hình chung
+								</span>
+							</a>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/project/category/list" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Quản lý dự án
+								</span>
+							</a>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/quan-ly-san-pham" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Quản lý sản phẩm
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+
+			<li class="m-menu__item  m-menu__item--submenu" routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+			 aria-haspopup="true" data-menu-submenu-toggle="hover">
+				<a href="#" class="m-menu__link m-menu__toggle">
+					<i class="m-menu__link-icon flaticon-list"></i>
+					<span class="m-menu__link-text">
+						Đơn Hàng
+					</span>
+					<i class="m-menu__ver-arrow la la-angle-right"></i>
+				</a>
+				<div class="m-menu__submenu">
+					<span class="m-menu__arrow"></span>
+					<ul class="m-menu__subnav">
+						<li class="m-menu__item  m-menu__item--parent" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
+						 aria-haspopup="true">
+							<span class="m-menu__link">
+								<span class="m-menu__link-text">
+									Đơn Hàng
+								</span>
+							</span>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/components/base/state" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Danh Sách Đơn Hàng
+								</span>
+							</a>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/components/base/typography" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Tạo Đơn Hàng
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+
+			<li class="m-menu__item  m-menu__item--submenu" routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+			 aria-haspopup="true" data-menu-submenu-toggle="hover">
+				<a href="#" class="m-menu__link m-menu__toggle">
+					<i class="m-menu__link-icon flaticon-business"></i>
+					<span class="m-menu__link-text">
+						Sản Phẩm
+					</span>
+					<i class="m-menu__ver-arrow la la-angle-right"></i>
+				</a>
+				<div class="m-menu__submenu">
+					<span class="m-menu__arrow"></span>
+					<ul class="m-menu__subnav">
+						<li class="m-menu__item  m-menu__item--parent" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
+						 aria-haspopup="true">
+							<span class="m-menu__link">
+								<span class="m-menu__link-text">
+									Sản Phẩm
+								</span>
+							</span>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/product/list" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Danh Sách Sản Phẩm
+								</span>
+							</a>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/product/add" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Đăng Sản Phẩm
+								</span>
+							</a>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/components/base/typography" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Upload Hình
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+
+			<li class="m-menu__item  m-menu__item--submenu" routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+			 aria-haspopup="true" data-menu-submenu-toggle="hover">
+				<a href="#" class="m-menu__link m-menu__toggle">
+					<i class="m-menu__link-icon flaticon-piggy-bank"></i>
+					<span class="m-menu__link-text">
+						Khuyến Mãi
+					</span>
+					<i class="m-menu__ver-arrow la la-angle-right"></i>
+				</a>
+				<div class="m-menu__submenu">
+					<span class="m-menu__arrow"></span>
+					<ul class="m-menu__subnav">
+						<li class="m-menu__item  m-menu__item--parent" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
+						 aria-haspopup="true">
+							<span class="m-menu__link">
+								<span class="m-menu__link-text">
+									Khuyến Mãi
+								</span>
+							</span>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/components/base/state" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Danh Sách Khuyến Mãi
+								</span>
+							</a>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/components/base/typography" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Mã giảm Gía
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+
+			<li class="m-menu__item  m-menu__item--submenu" routerLinkActive="m-menu__item--open" routerLinkActiveOptions="{ exact: true }"
+			 aria-haspopup="true" data-menu-submenu-toggle="hover">
+				<a href="#" class="m-menu__link m-menu__toggle">
+					<i class="m-menu__link-icon flaticon-user-ok"></i>
+					<span class="m-menu__link-text">
+						Khách Hàng
+					</span>
+					<i class="m-menu__ver-arrow la la-angle-right"></i>
+				</a>
+				<div class="m-menu__submenu">
+					<span class="m-menu__arrow"></span>
+					<ul class="m-menu__subnav">
+						<li class="m-menu__item  m-menu__item--parent" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
+						 aria-haspopup="true">
+							<span class="m-menu__link">
+								<span class="m-menu__link-text">
+									Khách Hàng
+								</span>
+							</span>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/components/base/state" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Lịch Sử
+								</span>
+							</a>
+						</li>
+						<li class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }" aria-haspopup="true">
+							<a routerLink="/components/base/typography" class="m-menu__link">
+								<i class="m-menu__link-bullet m-menu__link-bullet--dot">
+									<span></span>
+								</i>
+								<span class="m-menu__link-text">
+									Danh Sách Khách Hàng
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+
+			<!-- End Actions Main -->
+		</ul>
+	</div>
+	<!-- END: Aside Menu -->
+</div>
+<!-- END: Left Aside -->

@@ -1,0 +1,20 @@
+.wrap_box_content {
+    display: block;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #FFFFFF;
+}
+
+.title_box_white {
+    color: #737373;
+    display: block;
+    font-size: 16px;
+    padding:10px 0px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.content_center {
+    padding: 20px 10px;
+    background: #fff;
+    overflow: hidden;
+}

@@ -1,0 +1,82 @@
+<!-- BEGIN: Subheader -->
+<p-growl [(value)]="msgs"></p-growl>
+<div class="m-subheader" appunwraptag="">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                Bài Viết Thông tin công ty
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a routerLink="/index" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a routerLink="/about" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            Danh Sách Bài Viết
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="m-content">
+    <div class="col-md-12 text-right">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-8">
+                        <input class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control">
+                            <option *ngFor="let item of size" [value]="item.id">
+                                {{item.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button style="margin-bottom: 20px;" class="btn btn-accent m-btn m-btn--air m-btn--custom" (click)="Create()">Tạo Mới Bài Viết</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="wrap_box_content">
+            <p-accordion *ngFor="let about of abouts; let i=index">
+                <p-accordionTab header="Giới thiệu chung - {{i}}" [selected]="false">
+                    <div class="content_center">
+                        <p *ngIf="!about.IsEdit">
+                            {{about.description}}
+                        </p>
+                        <p *ngIf="about.IsEdit">
+                            <p-editor [(ngModel)]="description" [style]="{'height':'320px'}">
+                            </p-editor>
+                        </p>
+                    </div>
+                </p-accordionTab>
+                <div class="row">
+                    <div class="col-md-12 text-right" style="margin-top:20px;">
+                        <button *ngIf="!about.IsEdit" style="margin-bottom: 20px;" class="btn btn-info" (click)="edit(about)">
+                            Chỉnh Sửa
+                        </button>
+                        <button *ngIf="about.IsEdit" style="margin-bottom: 20px;" class="btn btn-primary" (click)="save(about)">
+                            Lưu
+                        </button>
+                        <button *ngIf="about.IsEdit" style="margin-bottom: 20px;" class="btn btn-danger" (click)="cancel(about)">
+                            Hủy Bỏ
+                        </button>
+                    </div>
+                </div>
+            </p-accordion>
+        </div>
+    </div>
+</div>
+
