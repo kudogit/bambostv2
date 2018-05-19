@@ -172,7 +172,7 @@
                         </div>
                     </div>
                     <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                        <a routerLink="/du-an/danh-sach/tao-moi" data-toggle="modal" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
                             <span>
                                 <i class="la la-cart-plus"></i>
                                 <span>
@@ -252,7 +252,7 @@
                             <td class="m-datatable__cell">
                                 <span style="width: 132px;">
                                     <button class="btn-warning" (click)="deleteProject(project.id)">Delete</button>
-                                    <button class="btn-primary" data-toggle="modal" (click)="selectEditProject(project)" data-target="#editProjectModal">Edit</button>
+                                    <button class="btn-primary" [routerLink]="['/du-an/danh-sach', project.id]">Edit</button>
                                 </span>
                             </td>
                         </tr>
@@ -264,31 +264,3 @@
         </div>
     </div>
 </div>
-
-<!--Popup-->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <app-project-create (reloadProjects)="getProjects()"></app-project-create>
-    </div>
-      
-    </div>
-  </div>
-  <div class="modal fade" id="editProjectModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-    <div class="modal-content" *ngIf="isEditProject">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <app-project-edit [editProject]="editProject" [projectCategories]="projectCategories" (reloadProjects)="getProjects()"></app-project-edit>
-    </div>
-      
-    </div>
-  </div>

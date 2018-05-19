@@ -51,5 +51,11 @@ namespace Bamboo.Service.Facade
             _projectRepository.SaveChanges();
             return Task.CompletedTask;
         }
+
+        public Task<EditProjectModel> GetById(int id)
+        {
+            var result = _projectRepository.Include(x => x.ProjectCategory).Single(x => x.Id == id).MapTo<EditProjectModel>();
+            return Task.FromResult(result);
+        }
     }
 }

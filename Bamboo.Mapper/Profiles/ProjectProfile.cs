@@ -13,7 +13,8 @@ namespace Bamboo.Mapper.Profiles
         {
             CreateMap<ProjectEntity, CreateProjectModel>();
             CreateMap<ProjectEntity, EditProjectModel>()
-                .ForMember(x => x.ProjectCategoryName, o => o.MapFrom(s => s.ProjectCategory.Name));
+                .ForMember(dest => dest.ProjectCategoryName,
+                    opt => opt.MapFrom(source => source.ProjectCategory.Name));
 
             CreateMap<CreateProjectModel, ProjectEntity>();
             CreateMap<EditProjectModel, ProjectEntity>();

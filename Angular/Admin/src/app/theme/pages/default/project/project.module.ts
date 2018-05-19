@@ -23,7 +23,8 @@ const routes: Routes = [
                 path: "",
                 component: ProjectComponent,
                 children: [
-                    { path: 'tao-moi', component: ProjectCreateComponent },
+                    { path: 'danh-sach/tao-moi', component: ProjectCreateComponent },
+                    { path: 'danh-sach/:id', component: ProjectEditComponent },
                     { path: 'danh-sach', component: ProjectListComponent },
                 ]
             }

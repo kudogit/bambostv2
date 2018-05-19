@@ -1,4 +1,5 @@
 <!-- BEGIN: Subheader -->
+<p-growl [(value)]="msgs"></p-growl>
 <div class="m-subheader" appunwraptag="">
     <div class="d-flex align-items-center">
         <div class="mr-auto">
@@ -57,7 +58,7 @@
                 <form (ngSubmit)="addNewProject($event)" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" [formGroup]="projectForm">
                     <div class="form-group m-form__group">
                       <label for="Title">Tên dự án:</label> <span class="text-danger">(*)</span>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" [(ngModel)]="newProject.title" formControlName="title">
                     </div>
                     <div class="form-group m-form__group">
                         <label for="ProjectCategory">Loại dự án:</label>
@@ -108,7 +109,7 @@
                                         <button type="submit" class="btn btn-primary" [disabled]="!projectForm.valid">
                                             Thêm Mới
                                         </button>
-                                        <button id="create-project-btn" type="button" class="btn btn-secondary" (click)="resetForm()" data-dismiss="modal" #cancelBtn>
+                                        <button id="create-project-btn" type="reset" class="btn btn-secondary">
                                             Hủy
                                         </button>
                                     </div>

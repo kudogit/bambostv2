@@ -1,4 +1,5 @@
 <!-- BEGIN: Subheader -->
+<p-growl [(value)]="msgs"></p-growl>
 <div class="m-subheader" appunwraptag="">
     <div class="d-flex align-items-center">
         <div class="mr-auto">
@@ -105,7 +106,7 @@
                                     <button type="submit" class="btn btn-primary" (click)="save()" [disabled]="!projectForm.valid">
                                         Lưu
                                     </button>
-                                    <button id="create-project-btn" type="button" class="btn btn-secondary" (click)="resetForm()" data-dismiss="modal" #cancelBtn>
+                                    <button id="create-project-btn" type="reset" class="btn btn-secondary">
                                         Hủy
                                     </button>
                                 </div>

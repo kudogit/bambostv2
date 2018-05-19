@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 @Injectable()
 export class ProjectService {
+    
     constructor(
         private http: HttpClient,
         private setting: SettingsService) {
@@ -58,6 +59,12 @@ export class ProjectService {
 
     editProject(model: Project): any {
         return this.http.put(this.setting.admin + 'api/project/edit/', model)
+            .map(res => { return res })
+            .catch(err => Observable.throw(err.json()));
+    }
+
+    getProjectById(id: any): any {
+        return this.http.get(this.setting.admin + 'api/project/' + id)
             .map(res => { return res })
             .catch(err => Observable.throw(err.json()));
     }

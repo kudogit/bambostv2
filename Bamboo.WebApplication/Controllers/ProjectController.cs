@@ -67,6 +67,12 @@ namespace Bamboo.WebApplication.Controllers
             return Ok(await _projectService.GetAllAsync().ConfigureAwait(true));
         }
 
+        [Route("{id}")]
+        public async Task<IActionResult> GetProject(int id)
+        {
+            return Ok(await _projectService.GetById(id).ConfigureAwait(true));
+        }
+
         [Route("delete/{id}")]
         [HttpDelete]
         public async Task<IActionResult> DeleteProject(int id)
