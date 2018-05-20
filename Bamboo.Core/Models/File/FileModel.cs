@@ -22,4 +22,10 @@ namespace Bamboo.Core.Models.File
     }
 
     public class FileModel : EditFileModel { }
+
+    public class FileBase64Model
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
+    }
 }

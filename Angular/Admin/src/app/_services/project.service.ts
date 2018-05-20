@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { SettingsService } from './setting.service';
 
@@ -40,7 +40,10 @@ export class ProjectService {
 
 
     createProject(model: Project): Observable<number> {
-        return this.http.post(this.setting.admin + 'api/project/create', model)
+        debugger;
+        var header = new HttpHeaders();
+        header.append('Content-Type', 'multipart/form-data');
+        return this.http.post(this.setting.admin + 'api/project/create', model, { headers : header })
             .map(res => { return res })
             .catch(err => Observable.throw(err.json()));
     }

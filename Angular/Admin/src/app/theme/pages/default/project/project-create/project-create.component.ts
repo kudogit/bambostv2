@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { Message } from 'primeng/primeng';
+import { FileService } from '../../../../../_services/file.service';
 
 @Component({
     selector: 'app-project-create',
@@ -15,7 +16,7 @@ import { Message } from 'primeng/primeng';
 export class ProjectCreateComponent implements OnInit {
 
     public success = { severity: 'success', summary: 'Thêm Dự Án Thành Công', detail: 'Thành Công' };
-    public fail = { severity: 'error', summary: 'Xóa Dự Án Thất Bại', detail: 'Thất Bại' };
+    public fail = { severity: 'error', summary: 'Thêm Dự Án Thất Bại', detail: 'Thất Bại' };
     public msgs: Message[];
     public projectCategories: ProjectCategory[];
 
@@ -25,7 +26,7 @@ export class ProjectCreateComponent implements OnInit {
         isEdit: false
     };
 
-    public newProject: Project = {
+    public newProject: CreateProject = {
         id: 0,
         title: '',
         investor: '',
@@ -34,7 +35,8 @@ export class ProjectCreateComponent implements OnInit {
         progress: '',
         description: '',
         projectCategoryId: 0,
-        projectCategoryName: ''
+        projectCategoryName: '',
+        file: null
     };
 
     public projectForm = new FormGroup({
@@ -46,23 +48,20 @@ export class ProjectCreateComponent implements OnInit {
         description: new FormControl(this.newProject.description, [])
     });
 
-    uploadedFiles: any[] = [];
-
     constructor(public projectService: ProjectService,
     public router: Router,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    public fileService: FileService) { }
 
     ngOnInit() {
         this.getProjectCategories();
     }
 
 
-    onUploadFile(event) {
-        console.log(event.files);
-    }
-
-    saveImage() {
-        console.log(this.uploadedFiles);
+    onUploadFile(files : FileList) {
+        debugger;
+        var result = this.fileService.convertToFileModel(files[0]);
+        this.newProject.file = result;
     }
 
     getProjectCategories() {
@@ -82,6 +81,7 @@ export class ProjectCreateComponent implements OnInit {
     }
 
     addNewProject(event) {
+        debugger;
         this.projectService.createProject(this.newProject).subscribe(data => {
             this.messageService.add(this.success);
             setTimeout(() => {

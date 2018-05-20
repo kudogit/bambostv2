@@ -99,7 +99,7 @@
                             <label class="control-label">
                                 Chọn Hình ảnh : <span class="text-danger">(*)</span>
                             </label>
-                            <p-fileUpload mode="basic" name="myfile[]" customUpload="true" (uploadHandler)="onUploadFile($event)" multiple="true"></p-fileUpload>
+                            <input type="file" id="file" (change)="onUploadFile($event.target.files)">
                         </div>
                     </div>
                     <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">

@@ -53,7 +53,7 @@ namespace Bamboo.WebApplication.Controllers
         }
 
         [Route("create")]
-        [HttpPost]
+        [HttpPost, DisableRequestSizeLimit]
         public async Task<IActionResult> CreateProject([FromBody] CreateProjectModel model)
         {
             var result = await _projectService.CreateAsync(model).ConfigureAwait(true);
