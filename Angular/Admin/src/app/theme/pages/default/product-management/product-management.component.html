@@ -51,7 +51,7 @@
             </div>
           </div>
           <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-            <a href="#" (click)="isAddNewProjectCategory = true" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+            <a href="#" (click)="isAddNewProductCategory = true" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
               <span>
                 <i class="la la-cart-plus"></i>
                 <span>
@@ -86,7 +86,7 @@
             </tr>
           </thead>
           <tbody class="m-datatable__body">
-            <tr class="m-datatable__row" *ngIf="isAddNewProjectCategory">
+            <tr class="m-datatable__row" *ngIf="isAddNewProductCategory">
               <td class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check" style="width: 5%;">
                 <span>
                   <label class="m-checkbox m-checkbox--single m-checkbox--solid m-checkbox--brand">
@@ -97,17 +97,17 @@
               </td>
               <td class="m-datatable__cell" style="width: 70%;">
                 <span>
-                  <input class="form-control m-input m-input--solid" type="text" placeholder="Tên loại dự án" [(ngModel)]="projectCategoryModel.name">
+                  <input class="form-control m-input m-input--solid" type="text" placeholder="Tên loại dự án" [(ngModel)]="productCategoryModel.name">
                 </span>
               </td>
               <td class="m-datatable__cell" style="width: 25%;">
                 <span>
-                  <button class="btn btn-primary" (click)="createProjectCategery()">Save</button>
-                  <button class="btn btn-warning" (click)="isAddNewProjectCategory = false; projectCategoryModel.name = ''">Cancel</button>
+                  <button class="btn btn-primary" (click)="createProductCategery()">Save</button>
+                  <button class="btn btn-warning" (click)="isAddNewProductCategory = false; productCategoryModel.name = ''">Cancel</button>
                 </span>
               </td>
             </tr>
-            <tr class="m-datatable__row" *ngFor="let item of projectCategories | filter:filter">
+            <tr class="m-datatable__row" *ngFor="let item of productCategories | filter:filter">
               <td class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check" style="width: 5%;">
                 <span>
                   <label class="m-checkbox m-checkbox--single m-checkbox--solid m-checkbox--brand">
@@ -124,9 +124,9 @@
               </td>
               <td class="m-datatable__cell" style="width: 25%;">
                 <span>
-                  <button *ngIf="!item.isEdit" class="btn btn-warning" (click)="deleteProjectCategory(item.id)">Delete</button>
+                  <button *ngIf="!item.isEdit" class="btn btn-warning" (click)="deleteProductCategory(item.id)">Delete</button>
                   <button *ngIf="!item.isEdit" (click)="item.isEdit = true" class="btn btn-primary">Edit</button>
-                  <button *ngIf="item.isEdit" class="btn btn-primary" (click)="editProjectCategory(item)">Save</button>
+                  <button *ngIf="item.isEdit" class="btn btn-primary" (click)="editProductCategory(item)">Save</button>
                   <button *ngIf="item.isEdit" class="btn btn-warning" (click)="item.isEdit = false">Cancel</button>
                 </span>
               </td>
@@ -220,7 +220,7 @@
             </tr>
           </thead>
           <tbody class="m-datatable__body">
-            <tr class="m-datatable__row" *ngFor="let project of projects">
+            <tr class="m-datatable__row" *ngFor="let product of products">
               <td class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check">
                 <span style="width: 50px;">
                   <label class="m-checkbox m-checkbox--single m-checkbox--solid m-checkbox--brand">
@@ -230,27 +230,27 @@
                 </span>
               </td>
               <td class="m-datatable__cell">
-                <span style="width: 132px;">{{project.title}}</span>
+                <span style="width: 132px;">{{product.title}}</span>
               </td>
               <td class="m-datatable__cell">
-                <span style="width: 132px;">{{getProjectCategoryName(project.projectCategoryId)}}</span>
+                <span style="width: 132px;">{{getProductCategoryName(product.productCategoryId)}}</span>
               </td>
               <td class="m-datatable__cell">
-                <span style="width: 132px;">{{project.investor}}</span>
+                <span style="width: 132px;">{{product.investor}}</span>
               </td>
               <td class="m-datatable__cell">
-                <span style="width: 132px;">{{project.efficiency}}</span>
+                <span style="width: 132px;">{{product.efficiency}}</span>
               </td>
               <td class="m-datatable__cell">
-                <span style="width: 132px;">{{project.standard}}</span>
+                <span style="width: 132px;">{{product.standard}}</span>
               </td>
               <td class="m-datatable__cell">
-                <span style="width: 132px;">{{project.progress}}</span>
+                <span style="width: 132px;">{{product.progress}}</span>
               </td>
               <td class="m-datatable__cell">
                 <span style="width: 132px;">
-                  <button class="btn-warning">Delete</button>
-                  <button (click)="item.isEdit = true" class="btn-primary" data-toggle="modal" (click)="selectEditProject(project)" data-target="#editProjectModal">Edit</button>
+                  <button class="btn-warning" (click)="deleteProduct(product.id)">Delete</button>
+                  <button (click)="item.isEdit = true" class="btn-primary" data-toggle="modal" (click)="selectEditProduct(product)" data-target="#editProductModal">Edit</button>
                 </span>
               </td>
             </tr>
@@ -272,7 +272,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <!-- <app-project-create (reloadProjects)="getProjects()"></app-project-create> -->
+      <app-product-create (reloadProducts)="getProducts()"></app-product-create>
     </div>
 
   </div>

@@ -11,9 +11,10 @@ using System;
 namespace Bamboo.Data.EF.Migrations
 {
     [DbContext(typeof(DbContext))]
-    partial class DbContextModelSnapshot : ModelSnapshot
+    [Migration("20180520144558_CreateProductManagerment")]
+    partial class CreateProductManagerment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

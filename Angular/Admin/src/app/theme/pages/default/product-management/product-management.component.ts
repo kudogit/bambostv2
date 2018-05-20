@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ProjectService } from '../../../../_services/project.service';
+import { ProductService } from '../../../../_services/product.service';
 
 @Component({
     selector: 'app-product-management',
@@ -9,60 +9,74 @@ import { ProjectService } from '../../../../_services/project.service';
 })
 export class ProductManagementComponent implements OnInit {
 
-    constructor(public projectService: ProjectService) { }
+    constructor(public productService: ProductService) { }
 
     ngOnInit() {
-        this.getProjectCategories();
-        this.getProjects();
+        this.getproductCategories();
+        this.getProducts();
     }
 
-    public projectCategories: ProjectCategory[] = [];
-    public projectCategoryModel: CreateProjectCategory = {
+    public productCategories: ProductCategory[] = [];
+    public productCategoryModel: CreateProductCategory = {
         name: ''
     }
 
     filter: any;
-    public isAddNewProjectCategory: boolean = false;
-    public editProject: Project;
-    public projects: Project[] = [];
+    public isAddNewProductCategory: boolean = false;
+    public editProduct: Product;
+    public products: Product[] = [];
 
-    createProjectCategery() {
-        this.projectService.createProjectCategory(this.projectCategoryModel).subscribe(data => {
+    createProductCategery() {
+        this.productService.createProductCategory(this.productCategoryModel).subscribe(data => {
             if (data != undefined) {
-                this.projectCategories.push({
+                this.productCategories.push({
                     id: data,
-                    name: this.projectCategoryModel.name,
+                    name: this.productCategoryModel.name,
                     isEdit: false
                 });
-                this.projectCategoryModel.name = '';
+                this.productCategoryModel.name = '';
             }
         })
     }
 
-    deleteProjectCategory(id) {
-        this.projectService.deleteProjectCategory(id).subscribe(data => {
-            this.getProjectCategories();
+    deleteProductCategory(id) {
+        this.productService.deleteProductCategory(id).subscribe(data => {
+            this.getproductCategories();
         })
     }
 
-    editProjectCategory(item) {
-        this.projectService.editProjectCategory(item).subscribe(data => {
-            this.getProjectCategories();
+    editProductCategory(item) {
+        this.productService.editProductCategory(item).subscribe(data => {
+            this.getproductCategories();
         })
     }
 
-    getProjectCategories() {
-        this.projectService.getProjectCategories().subscribe(data => {
-            this.projectCategories = data;
-            this.projectCategories.forEach(element => {
+    getproductCategories() {
+        this.productService.getProductCategorie().subscribe(data => {
+            this.productCategories = data;
+            this.productCategories.forEach(element => {
                 element.isEdit = false
             });
         });
     }
 
-    getProjects() {
-        this.projectService.getProjects().subscribe(data => {
-            this.projects = data;
+    getProducts() {
+        this.productService.getProduct().subscribe(data => {
+            this.products = data;
         })
+    }
+
+    getProductCategoryName(productCategoryId) {
+        var productCategorie = this.productCategories.find(item => item.id == productCategoryId);
+        return productCategorie.name;
+    }
+
+    deleteProduct(productId) {
+        this.productService.deleteProduct(productId).subscribe(data => {
+            console.log("delete ok");
+            this.products = this.products.filter(item => item.id != productId);
+        }, err => {
+            console.log("delete error: ", err);
+        });
     }
 }

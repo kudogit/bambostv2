@@ -29,9 +29,10 @@ import {
 import { ProjectCreateComponent } from '../project/project-create/project-create.component';
 import { ProjectEditComponent } from '../project/project-edit/project-edit.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ProjectService } from '../../../../_services/project.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { EditorModule } from 'primeng/components/editor/editor';
+import { ProductService } from '../../../../_services/product.service';
+import { ProductCreateComponent } from './product-create/product-create.component';
 
 const routes: Routes = [
     {
@@ -41,6 +42,10 @@ const routes: Routes = [
             {
                 path: '',
                 component: ProductManagementComponent,
+            },
+            {
+                path: 'tao-san-pham',
+                component: ProductCreateComponent,
             },
         ],
     },
@@ -61,10 +66,11 @@ const routes: Routes = [
     ],
     declarations: [
         ProductManagementComponent,
+        ProductCreateComponent
     ],
     providers: [
         HttpClient,
-        ProjectService
+        ProductService
     ]
 })
 

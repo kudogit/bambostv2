@@ -1,0 +1,124 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader" appunwraptag="">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                Thêm Mới Dự Án
+            </h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">
+                    <a routerLink="/index" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="#" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            Dự Án
+                        </span>
+                    </a>
+                </li>
+                <li class="m-nav__separator">
+                    -
+                </li>
+                <li class="m-nav__item">
+                    <a href="#" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            Thêm Mới
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END: Subheader -->
+<div class="m-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <!--begin::Portlet-->
+            <div class="m-portlet">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <span class="m-portlet__head-icon m--hide">
+                                <i class="la la-gear"></i>
+                            </span>
+                            <h3 class="m-portlet__head-text text-danger">
+                                Điền đầy đủ thông tin vào các trường (*)
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!--begin::Form-->
+                <form (ngSubmit)="addNewProduct($event)" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed"
+                    [formGroup]="productForm">
+                    <div class="form-group m-form__group">
+                        <label for="Title">Tên sản phẩm:</label>
+                        <span class="text-danger">(*)</span>
+                        <input type="text" class="form-control" formControlName="title">
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label class="center-block">Loại sản phẩm:
+                            <select class="form-control" formControlName="productCategoryId">
+                                <option *ngFor="let productCategory of productCategories" [value]="productCategory.id">{{productCategory.name}}</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="Investor">Chủ đầu tư:</label>
+                        <span class="text-danger">(*)</span>
+                        <input type="text" class="form-control" name="Investor" formControlName="investor">
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="Efficiency">Công suất thiết kế:</label>
+                        <span class="text-danger">(*)</span>
+                        <input type="text" class="form-control" name="Efficiency" formControlName="efficiency">
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="Standard">Tiêu chuẩn xả thải:</label>
+                        <span class="text-danger">(*)</span>
+                        <input type="text" class="form-control" name="Standard" formControlName="standard">
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="Progress">Tiến độ:</label>
+                        <span class="text-danger">(*)</span>
+                        <input type="text" class="form-control" name="Progress" formControlName="progress">
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="Description">Mô tả:</label>
+                        <p-editor class="form-control" [style]="{'height':'320px'}" formControlName="description"></p-editor>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <div class="col-lg-12">
+                            <label class="control-label">
+                                Chọn Hình ảnh :
+                                <span class="text-danger">(*)</span>
+                            </label>
+                            <p-fileUpload mode="basic" name="myfile[]" customUpload="true" multiple="true"></p-fileUpload>
+                        </div>
+                    </div>
+                    <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+                        <div class="m-form__actions m-form__actions--solid">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">
+                                        Thêm Mới
+                                    </button>
+                                    <button id="create-product-btn" type="button" class="btn btn-secondary" (click)="resetForm()" data-dismiss="modal" #cancelBtn>
+                                        Hủy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
+</div>

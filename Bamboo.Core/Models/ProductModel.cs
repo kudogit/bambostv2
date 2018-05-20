@@ -6,10 +6,10 @@ using System.Text;
 
 namespace Bamboo.Core.Models
 {
-    [Validator(typeof(ProjectModelValidator.CreateProjectModelValidator))]
+    [Validator(typeof(ProductModelValidator.CreateProductModelValidator))]
     public class CreateProductModel
     {
-        //  Tên dự án
+        //  Tên sản phẩm
         public string Title { get; set; }
 
         //  Chủ đầu tư
@@ -31,9 +31,10 @@ namespace Bamboo.Core.Models
     }
 
 
-    [Validator(typeof(ProjectModelValidator.EditProjectModelValidator))]
+    [Validator(typeof(ProductModelValidator.EditProductModelValidator))]
     public class EditProductModel : CreateProductModel
     {
         public int Id { get; set; }
+        public string ProductCategoryName { get; set; }
     }
 }

@@ -6,13 +6,13 @@ using System.Text;
 
 namespace Bamboo.Core.Models
 {
-    [Validator(typeof(ProjectCategoryModelValidator.CreateProjectCategoryModelValidator))]
+    [Validator(typeof(ProductCategoryModelValidator.CreateProductCategoryModelValidator))]
     public class CreateProductCategoryModel
     {
         public string Name { get; set; }
     }
 
-    [Validator(typeof(ProjectCategoryModelValidator.EditProjectCategoryModelValidator))]
+    [Validator(typeof(ProductCategoryModelValidator.EditProductCategoryModelValidator))]
     public class EditProductCategoryModel : CreateProductCategoryModel
     {
         public int Id { get; set; }

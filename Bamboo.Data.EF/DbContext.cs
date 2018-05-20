@@ -28,6 +28,10 @@ namespace Bamboo.Data.EF
             // ReSharper disable once ObjectCreationAsStatement
             new ProjectEntityMap(builder.Entity<ProjectEntity>());
             // ReSharper disable once ObjectCreationAsStatement
+            new ProductCategoryEntityMap(builder.Entity<ProductCategoryEntity>());
+            // ReSharper disable once ObjectCreationAsStatement
+            new ProductEntityMap(builder.Entity<ProductEntity>());
+            // ReSharper disable once ObjectCreationAsStatement
             new ConfigurationEntityMap(builder.Entity<ConfigurationEntity>());
         }
     }
