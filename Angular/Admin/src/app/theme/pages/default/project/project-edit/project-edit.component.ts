@@ -4,6 +4,8 @@ import { ProjectService } from '../../../../../_services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { SettingsService } from '../../../../../_services/setting.service';
+import { FileService } from '../../../../../_services/file.service';
 
 @Component({
     selector: 'app-project-edit',
@@ -14,13 +16,14 @@ import { MessageService } from 'primeng/components/common/messageservice';
 })
 export class ProjectEditComponent implements OnInit {
 
+    public baseUrl = this.settingService._admin;
     public success = { severity: 'success', summary: 'Thêm Dự Án Thành Công', detail: 'Thành Công' };
     public fail = { severity: 'error', summary: 'Xóa Dự Án Thất Bại', detail: 'Thất Bại' };
     public msgs: Message[];
 
     public projectCategories: any[];
 
-    public editProject: Project = {
+    public editProject: EditProject = {
         id: 0,
         title: '',
         investor: '',
@@ -29,7 +32,9 @@ export class ProjectEditComponent implements OnInit {
         progress: '',
         description: '',
         projectCategoryId: 0,
-        projectCategoryName: ''
+        projectCategoryName: '',
+        files: [],
+        fileModels: []
     };
 
     public projectForm = new FormGroup({
@@ -44,12 +49,20 @@ export class ProjectEditComponent implements OnInit {
     constructor(public projectService: ProjectService,
         public router: Router,
         public route: ActivatedRoute,
-        private messageService: MessageService) {
+        private messageService: MessageService,
+        public settingService: SettingsService,
+        public fileService: FileService) {
         this.route.params.subscribe(params => this.getProject(params["id"]));
     }
 
     ngOnInit() {
         this.getProjectCategories();
+    }
+
+    onUploadFile(files : FileList) {
+        for(var i = 0; i< files.length; i++){
+           this.editProject.files.push(this.fileService.convertToFileModel(files[i]));
+        }
     }
 
     getProjectCategories(){

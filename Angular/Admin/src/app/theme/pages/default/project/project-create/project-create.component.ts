@@ -36,7 +36,7 @@ export class ProjectCreateComponent implements OnInit {
         description: '',
         projectCategoryId: 0,
         projectCategoryName: '',
-        file: null
+        files: []
     };
 
     public projectForm = new FormGroup({
@@ -59,9 +59,9 @@ export class ProjectCreateComponent implements OnInit {
 
 
     onUploadFile(files : FileList) {
-        debugger;
-        var result = this.fileService.convertToFileModel(files[0]);
-        this.newProject.file = result;
+        for(var i = 0; i< files.length; i++){
+           this.newProject.files.push(this.fileService.convertToFileModel(files[i]));
+        }
     }
 
     getProjectCategories() {

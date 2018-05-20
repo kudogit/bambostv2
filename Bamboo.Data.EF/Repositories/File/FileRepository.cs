@@ -17,18 +17,11 @@ namespace Bamboo.Data.EF.Repositories.File
         {
         }
 
-        public async Task<FileEntity> SaveImage(FileBase64Model model)
+        public async Task<string> SaveImage(FileBase64Model model, int size = 150, int quality = 75)
         {
-            var url = await FileHelper.SaveImage(model.Value.ConvertToStream(), model.Name).ConfigureAwait(true);
-            var result = Add(new FileEntity
-            {
-                Name = model.Name,
-                Url = url
-            });
+            var url = await FileHelper.SaveImage(model.Value.ConvertToStream(), model.Name, size: size, quality: quality).ConfigureAwait(true);
 
-            SaveChanges();
-
-            return result;
+            return url;
         }
     }
 }

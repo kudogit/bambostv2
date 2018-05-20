@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Bamboo.Core.Models.File;
 using Bamboo.Core.Validators;
@@ -29,7 +30,7 @@ namespace Bamboo.Core.Models
         // Miêu tả
         public string Description { get; set; }
 
-        public FileBase64Model File { get; set; }
+        public FileBase64Model[] Files { get; set; }
 
         public int ProjectCategoryId { get; set; }
     }
@@ -41,5 +42,7 @@ namespace Bamboo.Core.Models
         public int Id { get; set; }
 
         public string ProjectCategoryName { get; set; }
+
+        public ICollection<FileModel> FileModels { get; set; }
     }
 }

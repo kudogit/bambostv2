@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Bamboo.Core.Entities;
 using Bamboo.Core.Models;
+using Bamboo.Core.Models.File;
 using Bamboo.Data.File;
 using Bamboo.Data.IRepositories;
 using Bamboo.DependencyInjection.Attributes;
 using Bamboo.Mapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bamboo.Service.Facade
 {
@@ -26,9 +28,19 @@ namespace Bamboo.Service.Facade
 
         public async Task<int> CreateAsync(CreateProjectModel model)
         {
-            var fileEntity = await _fileRepository.SaveImage(model.File).ConfigureAwait(true);
             var entity = model.MapTo<ProjectEntity>();
-            entity.FileIds = fileEntity.Id.ToString();
+            entity.Files = new List<FileEntity>();
+            foreach (var file in model.Files)
+            {
+                var url = await _fileRepository.SaveImage(file, 300).ConfigureAwait(true);
+                entity.Files.Add(new FileEntity
+                {
+                    CreatedDateTime = DateTimeOffset.UtcNow,
+                    Name = file.Name,
+                    Url = url
+                });
+            }
+
             var result = _projectRepository.Add(entity);
             _projectRepository.SaveChanges();
             return result.Id;
@@ -60,7 +72,7 @@ namespace Bamboo.Service.Facade
 
         public Task<EditProjectModel> GetById(int id)
         {
-            var result = _projectRepository.Include(x => x.ProjectCategory).Single(x => x.Id == id).MapTo<EditProjectModel>();
+            var result = _projectRepository.Include(x => x.ProjectCategory).Include(x => x.Files).Single(x => x.Id == id).MapTo<EditProjectModel>();
             return Task.FromResult(result);
         }
     }

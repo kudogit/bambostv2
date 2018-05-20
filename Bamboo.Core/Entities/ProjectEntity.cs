@@ -31,6 +31,6 @@ namespace Bamboo.Core.Entities
 
         public virtual ProjectCategoryEntity ProjectCategory { get; set; }
 
-        public string FileIds { get; set; }
+        public virtual ICollection<FileEntity> Files { get; set; }
     }
 }

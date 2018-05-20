@@ -9,6 +9,6 @@ namespace Bamboo.Data.File
 {
     public interface IFileRepository : IEntityRepository<FileEntity>
     {
-        Task<FileEntity> SaveImage(FileBase64Model model);
+        Task<string> SaveImage(FileBase64Model model, int size = 150, int quality = 75);
     }
 }

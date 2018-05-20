@@ -20,5 +20,19 @@ interface CreateProject {
     description: string,
     projectCategoryId: number,
     projectCategoryName: string,
-    file: any
+    files: any[]
+}
+
+interface EditProject {
+    id: number,
+    title: string,
+    investor: string,
+    efficiency: string,
+    standard: string,
+    progress: string,
+    description: string,
+    projectCategoryId: number,
+    projectCategoryName: string,
+    files: any[],
+    fileModels: any[]
 }

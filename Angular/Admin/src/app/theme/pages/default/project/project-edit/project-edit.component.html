@@ -95,9 +95,20 @@
                         <span class="text-danger">(*)</span>
                         <input type="text" class="form-control" [(ngModel)]="editProject.progress" name="Progress" formControlName="progress">
                     </div>
+                    <div class="form-group m-form__group" *ngFor="let fileModel of editProject.fileModels">
+                        <img [src]="baseUrl + fileModel.url" alt="">
+                    </div>
                     <div class="form-group m-form__group">
                         <label for="Description">Mô tả:</label>
                         <p-editor class="form-control" [style]="{'height':'320px'}" [(ngModel)]="editProject.description" formControlName="description"></p-editor>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <div class="col-lg-12">
+                            <label class="control-label">
+                                Chọn Hình ảnh :
+                            </label>
+                            <input type="file" id="file" multiple (change)="onUploadFile($event.target.files)">
+                        </div>
                     </div>
                     <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
                         <div class="m-form__actions m-form__actions--solid">
