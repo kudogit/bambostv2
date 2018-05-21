@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProductService } from '../../../../_services/product.service';
+import { Message } from 'primeng/primeng';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-product-management',
@@ -14,6 +16,9 @@ export class ProductManagementComponent implements OnInit {
     ngOnInit() {
         this.getproductCategories();
         this.getProducts();
+        this.clearMsgSubject.debounceTime(2000).subscribe(item => {
+            this.msgs = [];
+        });
     }
 
     public productCategories: ProductCategory[] = [];
@@ -22,6 +27,8 @@ export class ProductManagementComponent implements OnInit {
     }
 
     filter: any;
+    msgs: Message[] = [];
+    clearMsgSubject = new Subject;
     public isAddNewProductCategory: boolean = false;
     public editProduct: Product;
     public products: Product[] = [];
@@ -35,6 +42,8 @@ export class ProductManagementComponent implements OnInit {
                     isEdit: false
                 });
                 this.productCategoryModel.name = '';
+                this.msgs.push({ severity: 'success', summary: 'Thêm mới thành công' });
+                this.clearMsgSubject.next();
             }
         })
     }
@@ -42,12 +51,16 @@ export class ProductManagementComponent implements OnInit {
     deleteProductCategory(id) {
         this.productService.deleteProductCategory(id).subscribe(data => {
             this.productCategories = this.productCategories.filter(item => item.id != id);
+            this.msgs.push({ severity: 'success', summary: 'Xóa thành công' });
+            this.clearMsgSubject.next();
         })
     }
 
     editProductCategory(item) {
         this.productService.editProductCategory(item).subscribe(data => {
             this.getproductCategories();
+            this.msgs.push({ severity: 'success', summary: 'Chỉnh sửa thành công' });
+            this.clearMsgSubject.next();
         })
     }
 
@@ -73,10 +86,12 @@ export class ProductManagementComponent implements OnInit {
 
     deleteProduct(productId) {
         this.productService.deleteProduct(productId).subscribe(data => {
-            console.log("delete ok");
+            this.msgs.push({ severity: 'success', summary: 'Xóa thành công' });
+            this.clearMsgSubject.next();
             this.products = this.products.filter(item => item.id != productId);
         }, err => {
-            console.log("delete error: ", err);
+            this.msgs.push({ severity: 'error', summary: err });
+            this.clearMsgSubject.next();
         });
     }
 }

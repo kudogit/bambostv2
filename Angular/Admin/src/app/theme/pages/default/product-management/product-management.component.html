@@ -170,7 +170,7 @@
             </div>
           </div>
           <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-            <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+            <a [routerLink]="['tao-san-pham']" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
               <span>
                 <i class="la la-cart-plus"></i>
                 <span>
@@ -250,7 +250,7 @@
               <td class="m-datatable__cell">
                 <span style="width: 132px;">
                   <button class="btn-warning" (click)="deleteProduct(product.id)">Delete</button>
-                  <button (click)="item.isEdit = true" class="btn-primary" data-toggle="modal" (click)="selectEditProduct(product)" data-target="#editProductModal">Edit</button>
+                  <button class="btn-primary" [routerLink]="['chinh-sua-san-pham/' + product.id]">Edit</button>
                 </span>
               </td>
             </tr>
@@ -263,30 +263,4 @@
   </div>
 </div>
 
-<!--Popup-->
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <app-product-create (reloadProducts)="getProducts()"></app-product-create>
-    </div>
-
-  </div>
-</div>
-<div class="modal fade" id="editProjectModal" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <!-- <app-project-edit [editProjectParam]="editProject" (reloadProjects)="getProjects()"></app-project-edit> -->
-    </div>
-
-  </div>
-</div>
+<p-growl [(value)]="msgs"></p-growl>

@@ -3,6 +3,7 @@ using Bamboo.Core.Models;
 using Bamboo.Data.IRepositories;
 using Bamboo.DependencyInjection.Attributes;
 using Bamboo.Mapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,12 @@ namespace Bamboo.Service.Facade
             _productRepository.Update(entity);
             _productRepository.SaveChanges();
             return Task.CompletedTask;
+        }
+
+        public Task<EditProductModel> GetById(int id)
+        {
+            var result = _productRepository.Include(x => x.ProductCategory).Include(x => x.Files).Single(x => x.Id == id).MapTo<EditProductModel>();
+            return Task.FromResult(result);
         }
     }
 }

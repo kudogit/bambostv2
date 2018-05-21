@@ -67,6 +67,13 @@ namespace Bamboo.WebApplication.Controllers
             return Ok(await _productService.GetAllAsync().ConfigureAwait(true));
         }
 
+        [Route("{id}")]
+        public async Task<IActionResult> GetProduct(int id)
+        {
+            var result = await _productService.GetById(id).ConfigureAwait(true);
+            return Ok(result);
+        }
+
         [Route("delete/{id}")]
         [HttpDelete]
         public async Task<IActionResult> DeleteProduct(int id)

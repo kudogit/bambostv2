@@ -33,6 +33,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { EditorModule } from 'primeng/components/editor/editor';
 import { ProductService } from '../../../../_services/product.service';
 import { ProductCreateComponent } from './product-create/product-create.component';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 const routes: Routes = [
     {
@@ -47,6 +48,10 @@ const routes: Routes = [
                 path: 'tao-san-pham',
                 component: ProductCreateComponent,
             },
+            {
+                path: 'chinh-sua-san-pham/:id',
+                component: ProductCreateComponent,
+            }
         ],
     },
 ];
@@ -62,7 +67,8 @@ const routes: Routes = [
         Ng2SearchPipeModule,
         DropdownModule,
         FileUploadModule,
-        EditorModule
+        EditorModule,
+        GrowlModule
     ],
     declarations: [
         ProductManagementComponent,
@@ -70,7 +76,8 @@ const routes: Routes = [
     ],
     providers: [
         HttpClient,
-        ProductService
+        ProductService,
+        MessageService
     ]
 })
 

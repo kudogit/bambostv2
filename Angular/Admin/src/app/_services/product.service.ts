@@ -62,4 +62,9 @@ export class ProductService {
             .catch(err => Observable.throw(err.json()));
     }
 
+    getProductById(id: any): any {
+        return this.http.get(this.setting.admin + 'api/product/' + id)
+            .map(res => { return res })
+            .catch(err => Observable.throw(err.json()));
+    }
 }
