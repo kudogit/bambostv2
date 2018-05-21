@@ -39,7 +39,7 @@ namespace Bamboo.Service.Facade
             _productRepository.Delete(new ProductEntity
             {
                 Id = id
-            });
+            }, true);
             _productRepository.SaveChanges();
             return Task.CompletedTask;
         }

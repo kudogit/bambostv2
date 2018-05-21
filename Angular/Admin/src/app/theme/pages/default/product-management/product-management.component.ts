@@ -41,7 +41,7 @@ export class ProductManagementComponent implements OnInit {
 
     deleteProductCategory(id) {
         this.productService.deleteProductCategory(id).subscribe(data => {
-            this.getproductCategories();
+            this.productCategories = this.productCategories.filter(item => item.id != id);
         })
     }
 
