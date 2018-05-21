@@ -139,17 +139,17 @@ namespace Bamboo.Data.EF.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int?>("ProductEntityId");
+
                     b.Property<int?>("ProjectEntityId");
 
                     b.Property<string>("Url");
 
-                    b.Property<int?>("ProductEntityId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjectEntityId");
-
                     b.HasIndex("ProductEntityId");
+
+                    b.HasIndex("ProjectEntityId");
 
                     b.ToTable("FileEntity");
                 });
@@ -256,8 +256,6 @@ namespace Bamboo.Data.EF.Migrations
                     b.Property<string>("Description");
 
                     b.Property<string>("Efficiency");
-
-                    b.Property<string>("FileIds");
 
                     b.Property<string>("Investor");
 
@@ -439,25 +437,14 @@ namespace Bamboo.Data.EF.Migrations
                 });
 
             modelBuilder.Entity("Bamboo.Core.Entities.FileEntity", b =>
-            {
-                b.HasOne("Bamboo.Core.Entities.ProjectEntity")
-                    .WithMany("Files")
-                    .HasForeignKey("ProjectEntityId");
-            });
-
-            modelBuilder.Entity("Bamboo.Core.Entities.ProjectEntity", b =>
-            {
-                b.HasOne("Bamboo.Core.Entities.ProjectCategoryEntity", "ProjectCategory")
-                    .WithMany("Projects")
-                    .HasForeignKey("ProjectCategoryId")
-                    .OnDelete(DeleteBehavior.Cascade);
-            });
-
-            modelBuilder.Entity("Bamboo.Core.Entities.FileEntity", b =>
                 {
                     b.HasOne("Bamboo.Core.Entities.ProductEntity")
                         .WithMany("Files")
                         .HasForeignKey("ProductEntityId");
+
+                    b.HasOne("Bamboo.Core.Entities.ProjectEntity")
+                        .WithMany("Files")
+                        .HasForeignKey("ProjectEntityId");
                 });
 
             modelBuilder.Entity("Bamboo.Core.Entities.ProductEntity", b =>
@@ -468,7 +455,13 @@ namespace Bamboo.Data.EF.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            
+            modelBuilder.Entity("Bamboo.Core.Entities.ProjectEntity", b =>
+                {
+                    b.HasOne("Bamboo.Core.Entities.ProjectCategoryEntity", "ProjectCategory")
+                        .WithMany("Projects")
+                        .HasForeignKey("ProjectCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {

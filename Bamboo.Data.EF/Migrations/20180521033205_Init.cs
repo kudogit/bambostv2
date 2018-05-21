@@ -10,6 +10,26 @@ namespace Bamboo.Data.EF.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AboutEntity",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatedBy = table.Column<int>(nullable: false),
+                    CreatedDateTime = table.Column<DateTimeOffset>(nullable: false),
+                    DeletedBy = table.Column<int>(nullable: true),
+                    DeletedDateTime = table.Column<DateTimeOffset>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    IsSelected = table.Column<bool>(nullable: false),
+                    LastUpdatedBy = table.Column<int>(nullable: true),
+                    LastUpdatedDateTime = table.Column<DateTimeOffset>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AboutEntity", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AdvisoryEntity",
                 columns: table => new
                 {
@@ -68,6 +88,64 @@ namespace Bamboo.Data.EF.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CarouselEntity",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatedBy = table.Column<int>(nullable: false),
+                    CreatedDateTime = table.Column<DateTimeOffset>(nullable: false),
+                    DeletedBy = table.Column<int>(nullable: true),
+                    DeletedDateTime = table.Column<DateTimeOffset>(nullable: true),
+                    IsSelected = table.Column<bool>(nullable: false),
+                    LastUpdatedBy = table.Column<int>(nullable: true),
+                    LastUpdatedDateTime = table.Column<DateTimeOffset>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CarouselEntity", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ConfigurationEntity",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatedBy = table.Column<int>(nullable: false),
+                    CreatedDateTime = table.Column<DateTimeOffset>(nullable: false),
+                    DeletedBy = table.Column<int>(nullable: true),
+                    DeletedDateTime = table.Column<DateTimeOffset>(nullable: true),
+                    Key = table.Column<string>(nullable: true),
+                    LastUpdatedBy = table.Column<int>(nullable: true),
+                    LastUpdatedDateTime = table.Column<DateTimeOffset>(nullable: true),
+                    Value = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConfigurationEntity", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductCategoryEntity",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatedBy = table.Column<int>(nullable: false),
+                    CreatedDateTime = table.Column<DateTimeOffset>(nullable: false),
+                    DeletedBy = table.Column<int>(nullable: true),
+                    DeletedDateTime = table.Column<DateTimeOffset>(nullable: true),
+                    LastUpdatedBy = table.Column<int>(nullable: true),
+                    LastUpdatedDateTime = table.Column<DateTimeOffset>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductCategoryEntity", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -196,6 +274,37 @@ namespace Bamboo.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductEntity",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatedBy = table.Column<int>(nullable: false),
+                    CreatedDateTime = table.Column<DateTimeOffset>(nullable: false),
+                    DeletedBy = table.Column<int>(nullable: true),
+                    DeletedDateTime = table.Column<DateTimeOffset>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Efficiency = table.Column<string>(nullable: true),
+                    Investor = table.Column<string>(nullable: true),
+                    LastUpdatedBy = table.Column<int>(nullable: true),
+                    LastUpdatedDateTime = table.Column<DateTimeOffset>(nullable: true),
+                    ProductCategoryId = table.Column<int>(nullable: false),
+                    Progress = table.Column<string>(nullable: true),
+                    Standard = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductEntity", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductEntity_ProductCategoryEntity_ProductCategoryId",
+                        column: x => x.ProductCategoryId,
+                        principalTable: "ProductCategoryEntity",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProjectEntity",
                 columns: table => new
                 {
@@ -206,9 +315,14 @@ namespace Bamboo.Data.EF.Migrations
                     DeletedBy = table.Column<int>(nullable: true),
                     DeletedDateTime = table.Column<DateTimeOffset>(nullable: true),
                     Description = table.Column<string>(nullable: true),
+                    Efficiency = table.Column<string>(nullable: true),
+                    Investor = table.Column<string>(nullable: true),
                     LastUpdatedBy = table.Column<int>(nullable: true),
                     LastUpdatedDateTime = table.Column<DateTimeOffset>(nullable: true),
-                    ProjectCategoryId = table.Column<int>(nullable: false)
+                    Progress = table.Column<string>(nullable: true),
+                    ProjectCategoryId = table.Column<int>(nullable: false),
+                    Standard = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -227,61 +341,32 @@ namespace Bamboo.Data.EF.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AdvisoryId = table.Column<int>(nullable: true),
-                    ContentBase64 = table.Column<string>(nullable: true),
                     CreatedBy = table.Column<int>(nullable: false),
                     CreatedDateTime = table.Column<DateTimeOffset>(nullable: false),
                     DeletedBy = table.Column<int>(nullable: true),
                     DeletedDateTime = table.Column<DateTimeOffset>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    EncodeFileName = table.Column<string>(nullable: true),
-                    FileExtension = table.Column<string>(nullable: true),
-                    FileName = table.Column<string>(nullable: true),
                     LastUpdatedBy = table.Column<int>(nullable: true),
                     LastUpdatedDateTime = table.Column<DateTimeOffset>(nullable: true),
-                    ProjectId = table.Column<int>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    ProductEntityId = table.Column<int>(nullable: true),
+                    ProjectEntityId = table.Column<int>(nullable: true),
+                    Url = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_FileEntity", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FileEntity_AdvisoryEntity_AdvisoryId",
-                        column: x => x.AdvisoryId,
-                        principalTable: "AdvisoryEntity",
+                        name: "FK_FileEntity_ProductEntity_ProductEntityId",
+                        column: x => x.ProductEntityId,
+                        principalTable: "ProductEntity",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_FileEntity_ProjectEntity_ProjectId",
-                        column: x => x.ProjectId,
+                        name: "FK_FileEntity_ProjectEntity_ProjectEntityId",
+                        column: x => x.ProjectEntityId,
                         principalTable: "ProjectEntity",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CarouselEntity",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    CreatedDateTime = table.Column<DateTimeOffset>(nullable: false),
-                    DeletedBy = table.Column<int>(nullable: true),
-                    DeletedDateTime = table.Column<DateTimeOffset>(nullable: true),
-                    FileId = table.Column<int>(nullable: false),
-                    IsSelected = table.Column<bool>(nullable: false),
-                    LastUpdatedBy = table.Column<int>(nullable: true),
-                    LastUpdatedDateTime = table.Column<DateTimeOffset>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CarouselEntity", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CarouselEntity_FileEntity_FileId",
-                        column: x => x.FileId,
-                        principalTable: "FileEntity",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -324,19 +409,19 @@ namespace Bamboo.Data.EF.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CarouselEntity_FileId",
-                table: "CarouselEntity",
-                column: "FileId");
+                name: "IX_FileEntity_ProductEntityId",
+                table: "FileEntity",
+                column: "ProductEntityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FileEntity_AdvisoryId",
+                name: "IX_FileEntity_ProjectEntityId",
                 table: "FileEntity",
-                column: "AdvisoryId");
+                column: "ProjectEntityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FileEntity_ProjectId",
-                table: "FileEntity",
-                column: "ProjectId");
+                name: "IX_ProductEntity_ProductCategoryId",
+                table: "ProductEntity",
+                column: "ProductCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectEntity_ProjectCategoryId",
@@ -346,6 +431,12 @@ namespace Bamboo.Data.EF.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AboutEntity");
+
+            migrationBuilder.DropTable(
+                name: "AdvisoryEntity");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -365,19 +456,25 @@ namespace Bamboo.Data.EF.Migrations
                 name: "CarouselEntity");
 
             migrationBuilder.DropTable(
+                name: "ConfigurationEntity");
+
+            migrationBuilder.DropTable(
+                name: "FileEntity");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "FileEntity");
-
-            migrationBuilder.DropTable(
-                name: "AdvisoryEntity");
+                name: "ProductEntity");
 
             migrationBuilder.DropTable(
                 name: "ProjectEntity");
+
+            migrationBuilder.DropTable(
+                name: "ProductCategoryEntity");
 
             migrationBuilder.DropTable(
                 name: "ProjectCategoryEntity");

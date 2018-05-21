@@ -11,8 +11,8 @@ using System;
 namespace Bamboo.Data.EF.Migrations
 {
     [DbContext(typeof(DbContext))]
-    [Migration("20180520081639_UpdateFileEntity_Ver2")]
-    partial class UpdateFileEntity_Ver2
+    [Migration("20180521033205_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -140,11 +140,81 @@ namespace Bamboo.Data.EF.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int?>("ProductEntityId");
+
+                    b.Property<int?>("ProjectEntityId");
+
                     b.Property<string>("Url");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ProductEntityId");
+
+                    b.HasIndex("ProjectEntityId");
+
                     b.ToTable("FileEntity");
+                });
+
+            modelBuilder.Entity("Bamboo.Core.Entities.ProductCategoryEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CreatedBy");
+
+                    b.Property<DateTimeOffset>("CreatedDateTime");
+
+                    b.Property<int?>("DeletedBy");
+
+                    b.Property<DateTimeOffset?>("DeletedDateTime");
+
+                    b.Property<int?>("LastUpdatedBy");
+
+                    b.Property<DateTimeOffset?>("LastUpdatedDateTime");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductCategoryEntity");
+                });
+
+            modelBuilder.Entity("Bamboo.Core.Entities.ProductEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CreatedBy");
+
+                    b.Property<DateTimeOffset>("CreatedDateTime");
+
+                    b.Property<int?>("DeletedBy");
+
+                    b.Property<DateTimeOffset?>("DeletedDateTime");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Efficiency");
+
+                    b.Property<string>("Investor");
+
+                    b.Property<int?>("LastUpdatedBy");
+
+                    b.Property<DateTimeOffset?>("LastUpdatedDateTime");
+
+                    b.Property<int>("ProductCategoryId");
+
+                    b.Property<string>("Progress");
+
+                    b.Property<string>("Standard");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductCategoryId");
+
+                    b.ToTable("ProductEntity");
                 });
 
             modelBuilder.Entity("Bamboo.Core.Entities.ProjectCategoryEntity", b =>
@@ -187,8 +257,6 @@ namespace Bamboo.Data.EF.Migrations
                     b.Property<string>("Description");
 
                     b.Property<string>("Efficiency");
-
-                    b.Property<string>("FileIds");
 
                     b.Property<string>("Investor");
 
@@ -367,6 +435,25 @@ namespace Bamboo.Data.EF.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Bamboo.Core.Entities.FileEntity", b =>
+                {
+                    b.HasOne("Bamboo.Core.Entities.ProductEntity")
+                        .WithMany("Files")
+                        .HasForeignKey("ProductEntityId");
+
+                    b.HasOne("Bamboo.Core.Entities.ProjectEntity")
+                        .WithMany("Files")
+                        .HasForeignKey("ProjectEntityId");
+                });
+
+            modelBuilder.Entity("Bamboo.Core.Entities.ProductEntity", b =>
+                {
+                    b.HasOne("Bamboo.Core.Entities.ProductCategoryEntity", "ProductCategory")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Bamboo.Core.Entities.ProjectEntity", b =>
