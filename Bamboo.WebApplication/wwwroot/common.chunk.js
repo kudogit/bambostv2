@@ -74,7 +74,10 @@ var ProjectService = (function () {
             .catch(function (err) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */].throw(err.json()); });
     };
     ProjectService.prototype.createProject = function (model) {
-        return this.http.post(this.setting.admin + 'api/project/create', model)
+        debugger;
+        var header = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["g" /* HttpHeaders */]();
+        header.append('Content-Type', 'multipart/form-data');
+        return this.http.post(this.setting.admin + 'api/project/create', model, { headers: header })
             .map(function (res) { return res; })
             .catch(function (err) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */].throw(err.json()); });
     };
@@ -90,6 +93,11 @@ var ProjectService = (function () {
     };
     ProjectService.prototype.editProject = function (model) {
         return this.http.put(this.setting.admin + 'api/project/edit/', model)
+            .map(function (res) { return res; })
+            .catch(function (err) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */].throw(err.json()); });
+    };
+    ProjectService.prototype.getProjectById = function (id) {
+        return this.http.get(this.setting.admin + 'api/project/' + id)
             .map(function (res) { return res; })
             .catch(function (err) { return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["a" /* Observable */].throw(err.json()); });
     };
