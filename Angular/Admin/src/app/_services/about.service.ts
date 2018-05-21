@@ -13,19 +13,19 @@ export class AboutService {
 
     }
     createAbout(about): Observable<CreateAbout> {
-        return this.http.post(this.setting.admin + 'api/about/create', about)
+        return this.http.post('/api/about/create', about)
             .map(res => { return res })
             .catch(err => Observable.throw(err.json()));
     }
 
     getAbouts(): Observable<any[]> {
-        return this.http.get(this.setting.admin + 'api/about/abouts')
+        return this.http.get('/api/about/abouts')
             .map(res => { return res })
             .catch(err => Observable.throw(err.json()));
     }
 
     updateAbout(about): Observable<any> {
-        return this.http.put(this.setting.admin + 'api/about/update', about)
+        return this.http.put('/api/about/update', about)
             .map(res => { return res })
             .catch(err => Observable.throw(err.json()));
     }

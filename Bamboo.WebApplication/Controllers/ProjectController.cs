@@ -53,7 +53,7 @@ namespace Bamboo.WebApplication.Controllers
         }
 
         [Route("create")]
-        [HttpPost]
+        [HttpPost, DisableRequestSizeLimit]
         public async Task<IActionResult> CreateProject([FromBody] CreateProjectModel model)
         {
             var result = await _projectService.CreateAsync(model).ConfigureAwait(true);
@@ -65,6 +65,12 @@ namespace Bamboo.WebApplication.Controllers
         public async Task<IActionResult> GetAllProject()
         {
             return Ok(await _projectService.GetAllAsync().ConfigureAwait(true));
+        }
+
+        [Route("{id}")]
+        public async Task<IActionResult> GetProject(int id)
+        {
+            return Ok(await _projectService.GetById(id).ConfigureAwait(true));
         }
 
         [Route("delete/{id}")]
