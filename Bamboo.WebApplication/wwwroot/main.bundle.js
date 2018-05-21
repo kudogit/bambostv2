@@ -294,7 +294,8 @@ var ScriptLoaderService = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsService; });
 var SettingsService = (function () {
     function SettingsService() {
-        this._admin = 'http://localhost:56310/';
+        // public _admin = 'http://localhost:56310/';
+        this._admin = '/';
         this._FORMATDATETIME = "dd/MM/yyyy";
         this._FORMATDATEMOMENT = "DD/MM/YYYY HH:mm:ss";
     }
