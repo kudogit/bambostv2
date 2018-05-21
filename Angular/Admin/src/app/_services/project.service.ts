@@ -40,7 +40,6 @@ export class ProjectService {
 
 
     createProject(model: Project): Observable<number> {
-        debugger;
         var header = new HttpHeaders();
         header.append('Content-Type', 'multipart/form-data');
         return this.http.post(this.setting.admin + 'api/project/create', model, { headers : header })
@@ -61,7 +60,9 @@ export class ProjectService {
     }
 
     editProject(model: Project): any {
-        return this.http.put(this.setting.admin + 'api/project/edit/', model)
+        var header = new HttpHeaders();
+        header.append('Content-Type', 'multipart/form-data');
+        return this.http.put(this.setting.admin + 'api/project/edit/', model, { headers: header })
             .map(res => { return res })
             .catch(err => Observable.throw(err.json()));
     }

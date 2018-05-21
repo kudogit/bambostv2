@@ -1,6 +1,25 @@
 .mt-20{
     margin-top: 20px;
-  }
-  .m-form.m-form--group-seperator-dashed .m-form__group{
-    border-bottom: none;
-  }
+}
+.m-form.m-form--group-seperator-dashed .m-form__group{
+  border-bottom: none;
+}
+.btn-del-img{
+    position: absolute;
+    top: 30px;
+    right: -30px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+.div-img-cover{
+    position: relative;
+    display: table;
+    margin: 0 auto;
+}

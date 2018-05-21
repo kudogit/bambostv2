@@ -4,8 +4,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class SettingsService {
 
-    // public _admin = 'http://localhost:56310/';
-    public _admin = '/';
+    private _admin = 'http://localhost:56310/';
     private _FORMATDATETIME = "dd/MM/yyyy";
     public get FORMATDATETIME() { return this._FORMATDATETIME; }
 

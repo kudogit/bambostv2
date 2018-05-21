@@ -95,8 +95,13 @@
                         <span class="text-danger">(*)</span>
                         <input type="text" class="form-control" [(ngModel)]="editProject.progress" name="Progress" formControlName="progress">
                     </div>
-                    <div class="form-group m-form__group" *ngFor="let fileModel of editProject.fileModels">
-                        <img [src]="baseUrl + fileModel.url" alt="">
+                    <div class="form-group m-form__group" *ngFor="let fileModel of editProject.fileModels; let i = index">
+                        <div class="div-img-cover">
+                                <img [src]="baseUrl + fileModel.url" alt="">
+                                <a href="#" (click)="removeFile(fileModel.id, i)" class="m-nav__link m-nav__link--icon btn-del-img">
+                                    <i class="m-nav__link-icon la la-trash"></i>
+                                </a>
+                        </div>
                     </div>
                     <div class="form-group m-form__group">
                         <label for="Description">Mô tả:</label>

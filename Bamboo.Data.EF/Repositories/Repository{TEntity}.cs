@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using Bamboo.Data.EF.Extensions;
 
 namespace Bamboo.Data.EF.Repositories
 {
@@ -11,11 +12,12 @@ namespace Bamboo.Data.EF.Repositories
     {
 
         private readonly CustomDbContext _dbContext;
-        private DbSet<TEntity> _dbSet;
+        private readonly DbSet<TEntity> _dbSet;
 
         public Repository(CustomDbContext dbContext)
         {
             _dbContext = dbContext;
+            _dbSet = _dbContext.Set<TEntity>();
         }
 
         public DbSet<TEntity> DbSet => _dbSet ?? _dbContext.Set<TEntity>();
@@ -44,7 +46,7 @@ namespace Bamboo.Data.EF.Repositories
             }
             catch(Exception err)
             {
-                throw err;
+                throw;
             }
         }
 
@@ -70,12 +72,12 @@ namespace Bamboo.Data.EF.Repositories
                     query = query.Include(includeProperty);
             }
 
-            return predicate == null ? query.Where(x => x.DeletedDateTime == null) : query.Where(predicate).Where(x => x.DeletedDateTime == null);
+            return (predicate == null ? query : query.Where(predicate)).WhereNotDeleted();
         }
 
-        public TEntity GetById(int Id)
+        public TEntity GetById(int id)
         {
-            return _dbContext.Set<TEntity>().FirstOrDefault(x => x.Id == Id && x.DeletedDateTime == null);
+            return Get(x => x.Id == id).SingleOrDefault();
         }
 
         public TEntity GetSingle(Expression<Func<TEntity, bool>> predicate = null, bool isIncludeDeleted = false, params Expression<Func<TEntity, object>>[] includeProperties)
@@ -88,7 +90,7 @@ namespace Bamboo.Data.EF.Repositories
             var query = DbSet.AsNoTracking();
             foreach (var includeProperty in includeProperties)
                 query = query.Include(includeProperty);
-            return query;
+            return query.WhereNotDeleted();
         }
 
         public int SaveChanges()

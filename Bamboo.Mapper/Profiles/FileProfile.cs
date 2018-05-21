@@ -13,6 +13,7 @@ namespace Bamboo.Mapper.Profiles
         {
             CreateMap<FileBase64Model, FileEntity>();
             CreateMap<FileEntity, FileModel>();
+            CreateMap<FileModel, FileEntity>();
         }
     }
 }

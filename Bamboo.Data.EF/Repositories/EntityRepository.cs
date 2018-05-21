@@ -7,10 +7,11 @@ using System.Text;
 
 namespace Bamboo.Data.EF.Repositories
 {
-    public class EntityRepository<TEntity> : Repository<DbContext, TEntity>, IEntityRepository<TEntity> where TEntity : BaseEntity, new()
+    public abstract class EntityRepository<TEntity> : Repository<DbContext, TEntity>, IEntityRepository<TEntity> where TEntity : BaseEntity, new()
     {
-        public EntityRepository(DbContext dbContext) : base(dbContext)
+        protected EntityRepository(DbContext dbContext) : base(dbContext)
         {
         }
+       
     }
 }

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Bamboo.Core.Entities;
 using Bamboo.Core.Models;
-using Bamboo.Core.Models.File;
 using Bamboo.Data.File;
 using Bamboo.Data.IRepositories;
 using Bamboo.DependencyInjection.Attributes;
@@ -30,16 +28,17 @@ namespace Bamboo.Service.Facade
         {
             var entity = model.MapTo<ProjectEntity>();
             entity.Files = new List<FileEntity>();
-            foreach (var file in model.Files)
-            {
-                var url = await _fileRepository.SaveImage(file, 300).ConfigureAwait(true);
-                entity.Files.Add(new FileEntity
+            if(model.Files != null)
+                foreach (var file in model.Files)
                 {
-                    CreatedDateTime = DateTimeOffset.UtcNow,
-                    Name = file.Name,
-                    Url = url
-                });
-            }
+                    var url = await _fileRepository.SaveImage(file, 300).ConfigureAwait(true);
+                    entity.Files.Add(new FileEntity
+                    {
+                        CreatedDateTime = DateTimeOffset.UtcNow,
+                        Name = file.Name,
+                        Url = url
+                    });
+                }
 
             var result = _projectRepository.Add(entity);
             _projectRepository.SaveChanges();
@@ -62,12 +61,23 @@ namespace Bamboo.Service.Facade
             return Task.CompletedTask;
         }
 
-        public Task UpdateAsync(EditProjectModel model)
+        public async Task UpdateAsync(EditProjectModel model)
         {
             var entity = model.MapTo<ProjectEntity>();
+            entity.Files = new List<FileEntity>();
+            if(model.Files != null)
+                foreach (var file in model.Files)
+                {
+                    var url = await _fileRepository.SaveImage(file, 300).ConfigureAwait(true);
+                    entity.Files.Add(new FileEntity
+                    {
+                        CreatedDateTime = DateTimeOffset.UtcNow,
+                        Name = file.Name,
+                        Url = url
+                    });
+                }
             _projectRepository.Update(entity);
             _projectRepository.SaveChanges();
-            return Task.CompletedTask;
         }
 
         public Task<EditProjectModel> GetById(int id)

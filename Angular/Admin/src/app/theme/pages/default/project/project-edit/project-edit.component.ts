@@ -16,7 +16,7 @@ import { FileService } from '../../../../../_services/file.service';
 })
 export class ProjectEditComponent implements OnInit {
 
-    public baseUrl = this.settingService._admin;
+    public baseUrl = this.settingService.admin;
     public success = { severity: 'success', summary: 'Thêm Dự Án Thành Công', detail: 'Thành Công' };
     public fail = { severity: 'error', summary: 'Xóa Dự Án Thất Bại', detail: 'Thất Bại' };
     public msgs: Message[];
@@ -60,6 +60,9 @@ export class ProjectEditComponent implements OnInit {
     }
 
     onUploadFile(files : FileList) {
+        if(!this.editProject.files)
+            this.editProject.files = [];
+
         for(var i = 0; i< files.length; i++){
            this.editProject.files.push(this.fileService.convertToFileModel(files[i]));
         }
@@ -92,6 +95,13 @@ export class ProjectEditComponent implements OnInit {
     selectProjectCategory(projectCategory) {
         this.editProject.projectCategoryId = projectCategory.id;
         this.editProject.projectCategoryName = projectCategory.name;
+    }
+
+    removeFile(id, index){
+        this.fileService.removeFile(id).subscribe(daata =>{
+            this.messageService.add({ severity: 'success', summary: 'Xóa hình ảnh thành công', detail: 'Thành Công' });
+            this.editProject.fileModels.splice(index, 1);
+        });
     }
 
 }
