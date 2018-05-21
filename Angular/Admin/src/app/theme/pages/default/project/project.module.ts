@@ -14,6 +14,7 @@ import { DataTableModule } from 'primeng/primeng';
 import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { ProjectService } from '../../../../_services/project.service';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { FileService } from '../../../../_services/file.service';
 const routes: Routes = [
     {
         path: "",
@@ -23,7 +24,8 @@ const routes: Routes = [
                 path: "",
                 component: ProjectComponent,
                 children: [
-                    { path: 'tao-moi', component: ProjectCreateComponent },
+                    { path: 'danh-sach/tao-moi', component: ProjectCreateComponent },
+                    { path: 'danh-sach/:id', component: ProjectEditComponent },
                     { path: 'danh-sach', component: ProjectListComponent },
                 ]
             }
@@ -49,7 +51,7 @@ const routes: Routes = [
         ProjectComponent, ProjectListComponent, ProjectCreateComponent, ProjectEditComponent
     ],
     providers: [
-        ProjectService, MessageService, ConfirmationService
+        ProjectService, MessageService, ConfirmationService, FileService
     ]
 })
 

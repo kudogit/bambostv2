@@ -5,9 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Bamboo.Core.Entities;
 using Bamboo.Core.Models;
+using Bamboo.Core.Models.File;
+using Bamboo.Data.File;
 using Bamboo.Data.IRepositories;
 using Bamboo.DependencyInjection.Attributes;
 using Bamboo.Mapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bamboo.Service.Facade
 {
@@ -15,17 +18,32 @@ namespace Bamboo.Service.Facade
     public class ProjectService : IProjectService
     {
         private readonly IProjectRepository _projectRepository;
+        private readonly IFileRepository _fileRepository;
 
-        public ProjectService(IProjectRepository projectRepository)
+        public ProjectService(IProjectRepository projectRepository, IFileRepository fileRepository)
         {
             _projectRepository = projectRepository;
+            _fileRepository = fileRepository;
         }
 
-        public Task<int> CreateAsync(CreateProjectModel model)
+        public async Task<int> CreateAsync(CreateProjectModel model)
         {
-            var result = _projectRepository.Add(model.MapTo<ProjectEntity>());
+            var entity = model.MapTo<ProjectEntity>();
+            entity.Files = new List<FileEntity>();
+            foreach (var file in model.Files)
+            {
+                var url = await _fileRepository.SaveImage(file, 300).ConfigureAwait(true);
+                entity.Files.Add(new FileEntity
+                {
+                    CreatedDateTime = DateTimeOffset.UtcNow,
+                    Name = file.Name,
+                    Url = url
+                });
+            }
+
+            var result = _projectRepository.Add(entity);
             _projectRepository.SaveChanges();
-            return Task.FromResult(result.Id);
+            return result.Id;
         }
 
         public Task<IQueryable<EditProjectModel>> GetAllAsync()
@@ -50,6 +68,12 @@ namespace Bamboo.Service.Facade
             _projectRepository.Update(entity);
             _projectRepository.SaveChanges();
             return Task.CompletedTask;
+        }
+
+        public Task<EditProjectModel> GetById(int id)
+        {
+            var result = _projectRepository.Include(x => x.ProjectCategory).Include(x => x.Files).Single(x => x.Id == id).MapTo<EditProjectModel>();
+            return Task.FromResult(result);
         }
     }
 }

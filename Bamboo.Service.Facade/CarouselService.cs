@@ -20,14 +20,11 @@ namespace Bamboo.Service.Facade
     {
         private readonly ICarouselRepository _carouselRepository;
         private readonly IFileRepository _fileRepository;
-        private readonly ConfigSettings _configSettings;
 
-        public CarouselService(ICarouselRepository carouselRepository, IFileRepository fileRepository,
-            ConfigSettings configSettings)
+        public CarouselService(ICarouselRepository carouselRepository, IFileRepository fileRepository)
         {
             _carouselRepository = carouselRepository;
             _fileRepository = fileRepository;
-            _configSettings = configSettings;
         }
 
     }

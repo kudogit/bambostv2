@@ -1,6 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { ProjectService } from '../../../../../_services/project.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/components/common/messageservice';
+import { Message } from 'primeng/primeng';
+import { FileService } from '../../../../../_services/file.service';
 
 @Component({
     selector: 'app-project-create',
@@ -11,9 +15,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ProjectCreateComponent implements OnInit {
 
-    @Output() reloadProjects = new EventEmitter<any>();
-    @ViewChild('cancelBtn') cancelBtn: ElementRef;
-
+    public success = { severity: 'success', summary: 'Thêm Dự Án Thành Công', detail: 'Thành Công' };
+    public fail = { severity: 'error', summary: 'Thêm Dự Án Thất Bại', detail: 'Thất Bại' };
+    public msgs: Message[];
     public projectCategories: ProjectCategory[];
 
     public selectedProjectCategory: ProjectCategory = {
@@ -22,7 +26,7 @@ export class ProjectCreateComponent implements OnInit {
         isEdit: false
     };
 
-    public newProject: Project = {
+    public newProject: CreateProject = {
         id: 0,
         title: '',
         investor: '',
@@ -31,7 +35,8 @@ export class ProjectCreateComponent implements OnInit {
         progress: '',
         description: '',
         projectCategoryId: 0,
-        projectCategoryName: ''
+        projectCategoryName: '',
+        files: []
     };
 
     public projectForm = new FormGroup({
@@ -40,25 +45,23 @@ export class ProjectCreateComponent implements OnInit {
         efficiency: new FormControl(this.newProject.efficiency, [Validators.required]),
         standard: new FormControl(this.newProject.standard, [Validators.required]),
         progress: new FormControl(this.newProject.progress, [Validators.required]),
-        description: new FormControl(this.newProject.description, []),
-        resetBtn: new FormControl()
+        description: new FormControl(this.newProject.description, [])
     });
 
-    uploadedFiles: any[] = [];
-
-    constructor(public projectService: ProjectService) { }
+    constructor(public projectService: ProjectService,
+    public router: Router,
+    private messageService: MessageService,
+    public fileService: FileService) { }
 
     ngOnInit() {
         this.getProjectCategories();
     }
 
 
-    onUploadFile(event) {
-        console.log(event.files);
-    }
-
-    saveImage() {
-        console.log(this.uploadedFiles);
+    onUploadFile(files : FileList) {
+        for(var i = 0; i< files.length; i++){
+           this.newProject.files.push(this.fileService.convertToFileModel(files[i]));
+        }
     }
 
     getProjectCategories() {
@@ -78,14 +81,15 @@ export class ProjectCreateComponent implements OnInit {
     }
 
     addNewProject(event) {
+        debugger;
         this.projectService.createProject(this.newProject).subscribe(data => {
-            this.reloadProjects.emit(null);
-            this.cancelBtn.nativeElement.click();
+            this.messageService.add(this.success);
+            setTimeout(() => {
+            this.router.navigateByUrl("/du-an/danh-sach");
+            }, 1000);
+        },
+        error => {
+            this.messageService.add(this.fail);
         });
     }
-
-    resetForm() {
-        this.projectForm.reset();
-    }
-
 }

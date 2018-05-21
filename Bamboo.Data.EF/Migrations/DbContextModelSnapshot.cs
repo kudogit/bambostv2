@@ -125,8 +125,6 @@ namespace Bamboo.Data.EF.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ContentBase64");
-
                     b.Property<int>("CreatedBy");
 
                     b.Property<DateTimeOffset>("CreatedDateTime");
@@ -135,17 +133,19 @@ namespace Bamboo.Data.EF.Migrations
 
                     b.Property<DateTimeOffset?>("DeletedDateTime");
 
-                    b.Property<string>("EncodeFileName");
-
-                    b.Property<string>("FileExtension");
-
-                    b.Property<string>("FileName");
-
                     b.Property<int?>("LastUpdatedBy");
 
                     b.Property<DateTimeOffset?>("LastUpdatedDateTime");
 
+                    b.Property<string>("Name");
+
+                    b.Property<int?>("ProjectEntityId");
+
+                    b.Property<string>("Url");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectEntityId");
 
                     b.ToTable("FileEntity");
                 });
@@ -370,6 +370,13 @@ namespace Bamboo.Data.EF.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Bamboo.Core.Entities.FileEntity", b =>
+                {
+                    b.HasOne("Bamboo.Core.Entities.ProjectEntity")
+                        .WithMany("Files")
+                        .HasForeignKey("ProjectEntityId");
                 });
 
             modelBuilder.Entity("Bamboo.Core.Entities.ProjectEntity", b =>

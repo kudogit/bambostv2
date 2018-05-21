@@ -13,5 +13,6 @@ namespace Bamboo.Service
         Task<IQueryable<EditProjectModel>> GetAllAsync();
         Task Delete(int id);
         Task UpdateAsync(EditProjectModel model);
+        Task<EditProjectModel> GetById(int id);
     }
 }

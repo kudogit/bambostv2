@@ -14,6 +14,7 @@
     <ProjectReference Include="..\Bamboo.Core\Bamboo.Core.csproj" />
     <ProjectReference Include="..\Bamboo.Data\Bamboo.Data.csproj" />
     <ProjectReference Include="..\Bamboo.DependencyInjection\Bamboo.DependencyInjection.csproj" />
+    <ProjectReference Include="..\Bamboo.Util\Bamboo.Util.csproj" />
   </ItemGroup>
 
 </Project>

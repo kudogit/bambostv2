@@ -11,12 +11,15 @@ namespace Bamboo.Mapper.Profiles
     {
         public ProjectProfile()
         {
-            CreateMap<ProjectEntity, CreateProjectModel>();
             CreateMap<ProjectEntity, EditProjectModel>()
-                .ForMember(x => x.ProjectCategoryName, o => o.MapFrom(s => s.ProjectCategory.Name));
+                .ForMember(x => x.Files, opt => opt.Ignore())
+                .ForMember(dest => dest.ProjectCategoryName, opt => opt.MapFrom(source => source.ProjectCategory.Name))
+                .ForMember(dest => dest.FileModels, opt => opt.MapFrom(s => s.Files));
 
-            CreateMap<CreateProjectModel, ProjectEntity>();
-            CreateMap<EditProjectModel, ProjectEntity>();
+            CreateMap<CreateProjectModel, ProjectEntity>()
+                .ForMember(x => x.Files, opt => opt.Ignore());
+            CreateMap<EditProjectModel, ProjectEntity>()
+                .ForMember(x => x.Files, opt => opt.Ignore());
         }
     }
 }

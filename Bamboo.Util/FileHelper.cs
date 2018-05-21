@@ -2,21 +2,23 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using System;
+using System.Configuration;
 using System.Drawing;
-//using System.Drawing.Drawing2D;
-//using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Bamboo.Core.Constants;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace Bamboo.Util
 {
     public static class FileHelper
     {
-        public static Stream ConvertToStream(this string base64)
+        public static Stream ConvertToStream(this string content)
         {
-            var bytes = Convert.FromBase64String(base64);            
+            var base64 = content.Split(',');
+            var bytes = Convert.FromBase64String(base64[base64.Length - 1]);            
             return new MemoryStream(bytes);
         }
 
@@ -58,46 +60,52 @@ namespace Bamboo.Util
             return Task.CompletedTask;
         }
 
-        public static Task SaveImage(Stream stream, string filenameWithExtension, string outputPath = "", int size = 150, int quality = 75)
+        public static Task<string> SaveImage(Stream stream, string filenameWithExtension, string outputPath = "", int size = 150, int quality = 75)
         {
-            //using (var image = new Bitmap(Image.FromStream(stream)))
-            //{
-            //    int width, height;
-            //    if (image.Width > image.Height)
-            //    {
-            //        width = size;
-            //        height = Convert.ToInt32(image.Height * size / (double)image.Width);
-            //    }
-            //    else
-            //    {
-            //        width = Convert.ToInt32(image.Width * size / (double)image.Height);
-            //        height = size;
-            //    }
-            //    var resized = new Bitmap(width, height);
-            //    using (var graphics = Graphics.FromImage(resized))
-            //    {
-            //        graphics.CompositingQuality = CompositingQuality.HighSpeed;
-            //        graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-            //        graphics.CompositingMode = CompositingMode.SourceCopy;
-            //        graphics.DrawImage(image, 0, 0, width, height);
+            using (var image = new Bitmap(Image.FromStream(stream)))
+            {
+                int width, height;
+                if (image.Width > image.Height)
+                {
+                    width = size;
+                    height = Convert.ToInt32(image.Height * size / (double)image.Width);
+                }
+                else
+                {
+                    width = Convert.ToInt32(image.Width * size / (double)image.Height);
+                    height = size;
+                }
+                var resized = new Bitmap(width, height);
+                using (var graphics = Graphics.FromImage(resized))
+                {
+                    graphics.CompositingQuality = CompositingQuality.HighSpeed;
+                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    graphics.CompositingMode = CompositingMode.SourceCopy;
+                    graphics.DrawImage(image, 0, 0, width, height);
 
+                    if (string.IsNullOrEmpty(outputPath))
+                    {
+                        outputPath = AppSettings.FileUrl;
+                    }
 
-            //        var outPath = Const.EnvironmentDerectory + outputPath + Guid.NewGuid() + Path.GetExtension(filenameWithExtension);
+                    outputPath += Guid.NewGuid() + Path.GetExtension(filenameWithExtension);
+                    var writePath = AppSettings.BaseUrl + outputPath;
+                    Directory.CreateDirectory(Path.GetDirectoryName(writePath));
 
-            //        using (var output = File.Open(outPath, FileMode.Create))
-            //        {
-            //            var qualityParamId = Encoder.Quality;
-            //            var encoderParameters = new EncoderParameters(1)
-            //            {
-            //                Param = {[0] = new EncoderParameter(qualityParamId, quality)}
-            //            };
-            //            var codec = ImageCodecInfo.GetImageDecoders()
-            //                .FirstOrDefault(x => x.FormatID == ImageFormat.Jpeg.Guid);
-            //            resized.Save(output, codec, encoderParameters);
-            //        }
-            //    }
-            //}
-            return Task.CompletedTask;
+                    using (var output = File.Open(writePath, FileMode.Create))
+                    {
+                        var qualityParamId = Encoder.Quality;
+                        var encoderParameters = new EncoderParameters(1)
+                        {
+                            Param = { [0] = new EncoderParameter(qualityParamId, quality) }
+                        };
+                        var codec = ImageCodecInfo.GetImageDecoders()
+                            .FirstOrDefault(x => x.FormatID == ImageFormat.Jpeg.Guid);
+                        resized.Save(output, codec, encoderParameters);
+                    }
+                }
+            }
+            return Task.FromResult(outputPath.Replace('\\', '/'));
         }
     }
 }
