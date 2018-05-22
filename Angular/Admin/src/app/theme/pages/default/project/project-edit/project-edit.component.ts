@@ -59,16 +59,16 @@ export class ProjectEditComponent implements OnInit {
         this.getProjectCategories();
     }
 
-    onUploadFile(files : FileList) {
-        if(!this.editProject.files)
+    onUploadFile(files: FileList) {
+        if (!this.editProject.files)
             this.editProject.files = [];
 
-        for(var i = 0; i< files.length; i++){
-           this.editProject.files.push(this.fileService.convertToFileModel(files[i]));
+        for (var i = 0; i < files.length; i++) {
+            this.editProject.files.push(this.fileService.convertToFileModel(files[i]));
         }
     }
 
-    getProjectCategories(){
+    getProjectCategories() {
         this.projectService.getProjectCategories().subscribe(data => {
             this.projectCategories = data;
         });
@@ -97,8 +97,8 @@ export class ProjectEditComponent implements OnInit {
         this.editProject.projectCategoryName = projectCategory.name;
     }
 
-    removeFile(id, index){
-        this.fileService.removeFile(id).subscribe(daata =>{
+    removeFile(id, index) {
+        this.fileService.removeFile(id).subscribe(daata => {
             this.messageService.add({ severity: 'success', summary: 'Xóa hình ảnh thành công', detail: 'Thành Công' });
             this.editProject.fileModels.splice(index, 1);
         });

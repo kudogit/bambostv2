@@ -49,18 +49,18 @@ export class ProjectCreateComponent implements OnInit {
     });
 
     constructor(public projectService: ProjectService,
-    public router: Router,
-    private messageService: MessageService,
-    public fileService: FileService) { }
+        public router: Router,
+        private messageService: MessageService,
+        public fileService: FileService) { }
 
     ngOnInit() {
         this.getProjectCategories();
     }
 
 
-    onUploadFile(files : FileList) {
-        for(var i = 0; i< files.length; i++){
-           this.newProject.files.push(this.fileService.convertToFileModel(files[i]));
+    onUploadFile(files: FileList) {
+        for (var i = 0; i < files.length; i++) {
+            this.newProject.files.push(this.fileService.convertToFileModel(files[i]));
         }
     }
 
@@ -85,11 +85,11 @@ export class ProjectCreateComponent implements OnInit {
         this.projectService.createProject(this.newProject).subscribe(data => {
             this.messageService.add(this.success);
             setTimeout(() => {
-            this.router.navigateByUrl("/du-an/danh-sach");
+                this.router.navigateByUrl("/du-an/danh-sach");
             }, 1000);
         },
-        error => {
-            this.messageService.add(this.fail);
-        });
+            error => {
+                this.messageService.add(this.fail);
+            });
     }
 }
