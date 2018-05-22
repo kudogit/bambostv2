@@ -25,5 +25,8 @@
     <ProjectReference Include="..\Bamboo.SignalR\Bamboo.SignalR.csproj" />
     <ProjectReference Include="..\Bamboo.Util\Bamboo.Util.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\upload\" />
+  </ItemGroup>
 
 </Project>
