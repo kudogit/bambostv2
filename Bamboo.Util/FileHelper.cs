@@ -105,7 +105,7 @@ namespace Bamboo.Util
                     }
                 }
             }
-            return Task.FromResult(outputPath.Replace('\\', '/').Replace("/wwwroot", ""));
+            return Task.FromResult(outputPath.Replace('\\', '/').Replace("/wwwroot/", ""));
         }
     }
 }

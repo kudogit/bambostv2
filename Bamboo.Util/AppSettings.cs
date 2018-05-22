@@ -8,7 +8,7 @@ namespace Bamboo.Util
 {
     public static class AppSettings
     {
-        public static string BaseUrl => Environment.CurrentDirectory + "\\wwwroot";
+        public static string BaseUrl => Environment.CurrentDirectory + "\\wwwroot\\";
         public static string FileUrl { get; set; }
         
     }
