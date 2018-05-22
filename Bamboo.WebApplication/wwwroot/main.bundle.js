@@ -379,7 +379,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var SettingsService = (function () {
     function SettingsService() {
-        this._admin = 'http://localhost:56310/';
+        this._admin = '/';
         this._FORMATDATETIME = "dd/MM/yyyy";
         this._FORMATDATEMOMENT = "DD/MM/YYYY HH:mm:ss";
     }
