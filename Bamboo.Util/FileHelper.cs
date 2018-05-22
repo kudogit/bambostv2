@@ -90,6 +90,7 @@ namespace Bamboo.Util
 
                     outputPath += Guid.NewGuid() + Path.GetExtension(filenameWithExtension);
                     var writePath = AppSettings.BaseUrl + outputPath;
+                    Directory.CreateDirectory(AppSettings.BaseUrl);
                     Directory.CreateDirectory(Path.GetDirectoryName(writePath));
 
                     using (var output = File.Open(writePath, FileMode.Create))
