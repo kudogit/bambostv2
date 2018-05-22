@@ -26,8 +26,8 @@ import {
     DropdownModule,
     FileUploadModule
 } from 'primeng/primeng';
-import { ProjectCreateComponent } from '../project/project-create/project-create.component';
-import { ProjectEditComponent } from '../project/project-edit/project-edit.component';
+import { ProjectCreateComponent } from '../project-management/project-create/project-create.component';
+import { ProjectEditComponent } from '../project-management/project-edit/project-edit.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { EditorModule } from 'primeng/components/editor/editor';

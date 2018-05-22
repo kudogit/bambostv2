@@ -32,7 +32,7 @@ const routes: Routes = [
             },
             {
                 "path": "du-an",
-                "loadChildren": ".\/pages\/default\/project\/project.module#ProjectModule"
+                "loadChildren": ".\/pages\/default\/project-management\/project.module#ProjectModule"
             },
             {
                 "path": "quan-ly-san-pham",

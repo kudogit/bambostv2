@@ -15,6 +15,7 @@ import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { ProjectService } from '../../../../_services/project.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { FileService } from '../../../../_services/file.service';
+import { ProjectDisplayComponent } from './project-display/project-display.component';
 const routes: Routes = [
     {
         path: "",
@@ -24,6 +25,7 @@ const routes: Routes = [
                 path: "",
                 component: ProjectComponent,
                 children: [
+                    { path: 'danh-sach/du-an-thi-cong', component: ProjectDisplayComponent },
                     { path: 'danh-sach/tao-moi', component: ProjectCreateComponent },
                     { path: 'danh-sach/:id', component: ProjectEditComponent },
                     { path: 'danh-sach', component: ProjectListComponent },
@@ -48,7 +50,7 @@ const routes: Routes = [
         EditorModule
     ],
     declarations: [
-        ProjectComponent, ProjectListComponent, ProjectCreateComponent, ProjectEditComponent
+        ProjectComponent, ProjectListComponent, ProjectCreateComponent, ProjectEditComponent, ProjectDisplayComponent
     ],
     providers: [
         ProjectService, MessageService, ConfirmationService, FileService
